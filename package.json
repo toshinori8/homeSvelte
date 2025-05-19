@@ -31,7 +31,7 @@
 		"sass": "^1.89.0",
 		"svelte": "^5.0.0",
 		"tailwindcss": "^4.1.7",
-		"textures": "^1.2.3",
+
 		"typescript": "^5.0.0",
 		"typescript-eslint": "^8.0.0",
 		"uuid": "^11.1.0"
@@ -40,6 +40,7 @@
 		"node": "22"
 	},
 	"dependencies": {
+		"textures": "^1.2.3",
 		"osmtogeojson": "^3.0.0-beta.5",
 		"leaflet": "^1.9.4",
 		"leaflet.markercluster": "^1.5.3",
