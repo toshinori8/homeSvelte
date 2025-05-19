@@ -10,11 +10,15 @@
                   <img src="/images/firstPage.png" alt="|" class="frontImage" />
       
                   <input type="button" class="btn btn-primary frontButton"
-                  onclick="location.href='/protected';"
+                  on:click={() =>{
+                    location.href= '/protected';
+                  }} 
                   value="Wycena wartości nieruchomości" />
 
                  <input type="button" class="btn btn-primary frontButton"
-                  onclick="location.href='/protected/data';"
+                 on:click={() =>{
+                    location.href= '/protected/data';
+                  }} 
                   value="Administracja" />
               </div>
       

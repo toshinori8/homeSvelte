@@ -38,6 +38,7 @@
 	},
 	"dependencies": {
 		"@maptiler/sdk": "^3.2.3",
+		"@turf/turf": "^7.2.0",
 		"axios": "^1.9.0",
 		"d3": "^7.9.0",
 		"d3-interpolate": "^3.0.1",
