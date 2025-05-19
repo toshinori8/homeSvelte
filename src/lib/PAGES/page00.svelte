@@ -20,7 +20,7 @@
 					<p>{$location.params.notes}</p>
 				</div>
 			{/if}
-			<div id="pageFooter" />
+			<div id="pageFooter" >
 		{/if}
 	</div>
 </div>
