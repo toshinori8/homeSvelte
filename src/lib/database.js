@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { allDocuments, location, currentDocument } from '$lib/stores/appStore.jsx';
+import { allDocuments, location, currentDocument } from '$lib/stores/appStore.js';
 import { get } from 'svelte/store'
 import { persisted } from 'svelte-persisted-store'
 

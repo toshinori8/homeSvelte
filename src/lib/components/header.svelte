@@ -1,6 +1,6 @@
 <script>
 
-	import { menuVisible } from '$lib/stores/appStore.jsx';
+	import { menuVisible } from '$lib/stores/appStore.js';
     import {onDestroy } from 'svelte';
     onDestroy(() => {
         $menuVisible= true;

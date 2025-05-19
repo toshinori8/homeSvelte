@@ -28,7 +28,7 @@
 		currentDocument,
 		POIelements,
 		nearLocationsPoints
-	} from '$lib/stores/appStore.jsx';
+	} from '$lib/stores/appStore.js';
 
 	import { get } from 'svelte/store';
 

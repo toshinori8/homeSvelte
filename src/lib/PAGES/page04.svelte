@@ -17,7 +17,7 @@
 		newLocation,
 		allDocuments,
 		currentDocument
-	} from '$lib/stores/appStore.jsx';
+	} from '$lib/stores/appStore.js';
 
 	import { fade } from 'svelte/transition';
 	// import fetchData from '$lib/database.js';

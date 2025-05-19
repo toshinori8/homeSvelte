@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { location, data, newLocation, allDocuments } from '$lib/stores/appStore.jsx';
+	// import { location, data, newLocation, allDocuments } from '$lib/stores/appStore.js';
 	import { redirect, menuVisible, loading } from '$lib/functions';
 	import fetchData from '$lib/database.js';
 	import { removeData } from '$lib/database.js';

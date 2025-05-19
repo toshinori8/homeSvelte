@@ -3,7 +3,7 @@
 	import Header from '$lib/components/header.svelte';
 	import Loading from '$lib/components/loading.svelte';
 	// import Slidericon from '$lib/components/slidericon.svg';
-	import { location } from '$lib/stores/appStore.jsx';
+	import { location } from '$lib/stores/appStore.js';
 
 	import RangeSlider from 'svelte-range-slider-pips';
 

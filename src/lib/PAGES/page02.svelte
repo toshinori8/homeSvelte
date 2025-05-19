@@ -4,7 +4,7 @@
 	import Loading from '$lib/components/loading.svelte';
 	// import {inputAutoSize} from '$lib/components/inputAutoSize.js';
 	import Table from '$lib/components/Table.svelte';
-	import { location } from '$lib/stores/appStore.jsx';
+	import { location } from '$lib/stores/appStore.js';
 	import Donut from '$lib/components/DonutD3.svelte';
 
 

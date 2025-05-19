@@ -1,7 +1,7 @@
 
 import { PUBLIC_API_OPENROUTE, PUBLIC_GAPI } from '$env/static/public';
 import axios from 'axios';
-import { location, allDocuments, nearLocation, options, loading } from '$lib/stores/appStore.jsx';
+import { location, allDocuments, nearLocation, options, loading } from '$lib/stores/appStore.js';
 import { get } from 'svelte/store';
 import { point, distance } from '@turf/turf';
 let polaOdpowiedzi = 'places.location,places.displayName';

@@ -1,6 +1,6 @@
 <script>
 	import '../app.scss';
-	import {loading} from '$lib/stores/appStore.jsx'
+	import {loading} from '$lib/stores/appStore.js'
 
 	$loading=false;
 </script>

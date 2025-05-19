@@ -1,7 +1,7 @@
 <script>
 	import Header from '$lib/components/header.svelte';
 	import Loading from '$lib/components/loading.svelte';
-	import { location, data, newLocation } from '$lib/stores/appStore.jsx';
+	import { location, data, newLocation } from '$lib/stores/appStore.js';
 	import DonutMultiple from '$lib/components/DonutMultiple.svelte';
 	import Wykres from '$lib/components/Wykres.svelte';
 </script>

@@ -1,12 +1,12 @@
 <script>
 	import Header from '$lib/components/header.svelte';
 	import Loading from '$lib/components/loading.svelte';
-	import { location } from '$lib/stores/appStore.jsx';
+	import { location } from '$lib/stores/appStore.js';
 </script>
 
 <div class="content-block section page_00 noselect">
 	<Header />
-<!-- {$location.adres} -->
+<!-- {$location.adres} -->	
 	<!-- {#if !$location.params}
 		<div class="center"><Loading /></div>
 	{/if} -->

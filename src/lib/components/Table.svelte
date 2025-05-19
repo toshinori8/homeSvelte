@@ -2,7 +2,7 @@
 	import { Modal, Button } from 'flowbite-svelte';
 	import { onMount } from 'svelte';
 	import Loading from './loading.svelte';
-	import { location, nearLocation, nearLocationsPoints } from '$lib/stores/appStore.jsx';
+	import { location, nearLocation, nearLocationsPoints } from '$lib/stores/appStore.js';
 	import Pin from '$lib/components/pin.svelte';
 	import { fade } from 'svelte/transition';
 	let sortKey = 'M2_PRICE';
