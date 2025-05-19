@@ -8,7 +8,7 @@ let serverURL = 'https://homesvelte-production.up.railway.app/public/';
 export default async function fetchData() {
   try {
     const response = await axios.get(
-      serverURL + 'protected/data.php', { params: { action: 'read' } });
+      serverURL + 'data.php', { params: { action: 'read' } });
 
     if (response.data) {
       allDocuments.set(response.data);
@@ -44,7 +44,7 @@ export async function removeData(id) {
     let JSdata = JSON.stringify(get(allDocuments));
 
     // Post request to save updated data
-    const response = await axios.post(serverURL + 'protected/data.php?action=write', 
+    const response = await axios.post(serverURL + 'data.php?action=write', 
     { data: JSdata },
     config);
 
@@ -94,7 +94,7 @@ export async function saveData() {
 
     let dataToSend = JSON.stringify(get(allDocuments));
 
-    const response = await axios.post(serverURL + 'protected/data.php?action=write', 
+    const response = await axios.post(serverURL + 'data.php?action=write', 
     { data: dataToSend },
     config);
 
