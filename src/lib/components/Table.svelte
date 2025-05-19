@@ -277,11 +277,10 @@
 		<Loading />
 	{:else if data}
 		<table class="firstTable">
-			<button class="addELEM" on:click={() => addElem()}>
+			<!-- <button class="addELEM" on:click={() => addElem()}>
 				+
-				
-			</button>
-
+				</button>
+ -->
 			<thead>
 				<tr>
 					<th class="nth" />
@@ -324,7 +323,7 @@
 								class="inputTD adres"
 								bind:value={row.adres}
 								on:blur={() => saveEdit(row, 'adres')}
-								onClick="this.select();"
+								on:click={(e) => e.currentTarget.select()}
 							/>
 						</td>
 						<td
@@ -343,7 +342,7 @@
 								min="1"
 								bind:value={row.params.POW}
 								on:blur={() => saveEdit(row)}
-								onClick="this.select();"
+								on:click={(e) => e.currentTarget.select()}
 							/>
 						</td>
 						<td>
@@ -354,7 +353,7 @@
 								step="100"
 								bind:value={row.params.price}
 								on:blur={() => saveEdit(row)}
-								onClick="this.select();"
+								on:click={(e) => e.currentTarget.select()}
 							/>
 						</td>
 						<td>
@@ -365,7 +364,7 @@
 								class="inputTD M2_PRICE"
 								bind:value={row.params.M2_PRICE}
 								on:blur={() => saveEdit(row)}
-								onClick="this.select();"
+								on:click={(e) => e.currentTarget.select()}
 							/>
 						</td>
 					</tr>
