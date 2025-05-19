@@ -4,6 +4,9 @@
 		"src/routes/+layout.js",
 		"src/routes/+layout.js"
 	],
+	"/api": [
+		"src/routes/api/+server.ts"
+	],
 	"/protected": [
 		"src/routes/protected/+page.js",
 		"src/routes/+layout.js"
