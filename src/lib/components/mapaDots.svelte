@@ -16,7 +16,8 @@
 	import * as turf from '@turf/turf';
 
 	// import MapaDots from '$lib/components/MapaDots.css?inline'
-	import { location } from '$lib/stores/appStore.jsx';
+	import { location } from '$lib/stores/appStore.js';
+	
 	
 
 	let mapMarkers = [];
