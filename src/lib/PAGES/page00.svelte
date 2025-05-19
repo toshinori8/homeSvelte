@@ -21,6 +21,7 @@
 				</div>
 			{/if}
 			<div id="pageFooter" >
+			</div>
 		{/if}
-	</div>
+	
 </div>
