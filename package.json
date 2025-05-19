@@ -31,12 +31,7 @@
 		"tailwindcss": "^3.4.9",
 		"typescript": "^5.0.0",
 		"typescript-eslint": "^8.0.0",
-		"vite": "^5.0.3"
-	},
-	"engines": {
-		"node": "22"
-	},
-	"dependencies": {
+		"vite": "^5.0.3",
 		"@maptiler/sdk": "^3.2.3",
 		"@turf/turf": "^7.2.0",
 		"axios": "^1.9.0",
@@ -60,5 +55,11 @@
 		"svelte-time": "^2.0.1",
 		"textures": "^1.2.3",
 		"uuid": "^11.1.0"
+	},
+	"engines": {
+		"node": "22"
+	},
+	"dependencies": {
+		
 	}
 }
