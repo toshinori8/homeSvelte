@@ -5,7 +5,7 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
-		"start": "node build/index.js",
+		"start": "node build/index.js --ommit dev",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
@@ -44,7 +44,10 @@
 		"pnpm": "^8.15.1",
 		"query-overpass": "^1.5.5",
 		"sass": "^1.70.0",
-		
+		"@maptiler/sdk": "^1.2.1",
+		"flowbite": "^2.2.1",
+		"flowbite-svelte": "^0.44.22",
+		"flowbite-svelte-icons": "^0.4.5",
 		"svelte-input-mask": "^1.1.0",
 		"svelte-persisted-store": "^0.7.0",
 		"svelte-range-slider-pips": "^2.3.1",
@@ -57,9 +60,5 @@
 		"node": "22"
 	},
 	"dependencies": {
-		"@maptiler/sdk": "^1.2.1",
-		"flowbite": "^2.2.1",
-		"flowbite-svelte": "^0.44.22",
-		"flowbite-svelte-icons": "^0.4.5"
-	}
+		
 }
