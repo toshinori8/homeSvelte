@@ -603,7 +603,7 @@ function Page03($$payload, $$props) {
       Wykres($$payload);
       $$payload.out += `<!---->`;
     }
-    $$payload.out += `<!--]--> <div></div> <div class="grid_content noselect centered full"></div> <h2 class="title_medium noselect"><span class="number_type noselect">9</span> Prezentacja cen sprzedaży nieruchomości w mieście <span style="color: var(--brand-green);">${escape_html(store_get($$store_subs ??= {}, "$location", location).adres)}</span></h2> <div class="grid_content noselect centered full">`;
+    $$payload.out += `<!--]--> <div><div class="grid_content noselect centered full"><h2 class="title_medium noselect"><span class="number_type noselect">9</span> Prezentacja cen sprzedaży nieruchomości w mieście <span style="color: var(--brand-green);">${escape_html(store_get($$store_subs ??= {}, "$location", location).adres)}</span></h2> <div class="grid_content noselect centered full">`;
     DonutMultiple($$payload, {
       data: store_get($$store_subs ??= {}, "$location", location).params.page03.data1,
       id: "id1"
@@ -614,7 +614,7 @@ function Page03($$payload, $$props) {
       data: store_get($$store_subs ??= {}, "$location", location).params.page03.data2,
       id: "id2"
     });
-    $$payload.out += `<!----></div> <div class="pageNumber svelte-167dqpw">3</div></div>`;
+    $$payload.out += `<!----></div> <div class="pageNumber svelte-167dqpw">3</div></div></div></div>`;
   } else {
     $$payload.out += "<!--[!-->";
   }
@@ -890,7 +890,7 @@ function _page($$payload, $$props) {
     Page03($$payload2);
     $$payload2.out += `<!----></div> <div class=".show-on-print">`;
     Page04($$payload2);
-    $$payload2.out += `<!----></div></div> <div class="A4Marker"></div> `;
+    $$payload2.out += `<!----></div></div> <div class="A4Marker">`;
     Drawer($$payload2, {
       placement: "top",
       width: "w-full",
@@ -940,7 +940,7 @@ function _page($$payload, $$props) {
     {
       $$payload2.out += "<!--[!-->";
     }
-    $$payload2.out += `<!--]-->`;
+    $$payload2.out += `<!--]--></div>`;
   }
   do {
     $$settled = true;

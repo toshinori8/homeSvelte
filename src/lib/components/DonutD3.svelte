@@ -50,7 +50,8 @@
 		on:click={() => {
 			active = !active;
 		}}
-	/>
+	>
+	</div>
 {/if}
 <div class="svg-item">
 	<svg style:color viewBox="-70 -70 140 140">

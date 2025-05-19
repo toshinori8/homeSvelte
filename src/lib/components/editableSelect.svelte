@@ -44,7 +44,7 @@
 	</select> 
 	<input type="text" bind:this={inputEl} />
 	<!-- svelte-ignore a11y-positive-tabindex -->
-	<i on:click={() => inputEl.focus()} on:keypress={()=>{}} role="button" tabindex=1/>
+	<i on:click={() => inputEl.focus()} on:keypress={()=>{}} role="button" tabindex=1> </i>
 </div>
 
 <style>

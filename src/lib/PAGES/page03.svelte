@@ -36,9 +36,9 @@
 				<Wykres />
 			{/if}
 
-			<div />
+			<div>
 
-			<div class="grid_content noselect centered full" />
+			<div class="grid_content noselect centered full" >
 
 			<h2 class="title_medium noselect">
 				<span class="number_type noselect">9</span>
@@ -62,6 +62,8 @@
 			</div>
 
 			<div class="pageNumber">3</div>
+			</div>
+		</div>
 		</div>
 	{/if}
 </div>

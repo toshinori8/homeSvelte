@@ -27,7 +27,7 @@
 
 	let cityBoundary;
 	let city;
-	let data;
+	
 	let menu_settings_visible = false;
 	let message;
 
@@ -313,7 +313,7 @@
 
 <main>
 	<div class="map-wrap">
-		<div class="map" bind:this={mapContainer} />
+		<div class="map" bind:this={mapContainer} ></div>
 	</div>
 
 	<div class="settings-menu {menu_settings_visible}" id="settings-menu">

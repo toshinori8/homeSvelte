@@ -465,7 +465,7 @@
 					on:stopTyping={onStopTyping}
 					use:stopTyping
 					value={$location.adres}
-				/>
+				></textarea>
 			</div>
 			<div class="grid_content">
 				<div class="backgr_rounded">
@@ -727,7 +727,7 @@
 	</div>
 
 	<div class="map-wrap">
-		<div class="map" id="map" bind:this={mapContainer} />
+		<div class="map" id="map" bind:this={mapContainer} > </div>
 	</div>
 
 	<div class="pageNumber">1</div>

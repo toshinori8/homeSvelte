@@ -74,7 +74,7 @@
 			</p>
 		</div>
 
-		<div class="grid_content full_width mapa"><div id="mapa" /></div>
+		<div class="grid_content full_width mapa"><div id="mapa" ></div></div>
 	</div>
 	<div class="page_content _2">
 		<div class="grid_content noselect POIelement">

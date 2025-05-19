@@ -111,7 +111,7 @@
 				<h2 class="title_medium noselect">
 					<span class="number_type noselect">5</span> Przedstawiono wycenę sporządzoną w oparciu o
 					szereg licznych transakcji, graficzny wykaz tych przeprowadzonych w najbliższej okolicy
-					uwzględniono na mapce za pomocq symbolu (<span class="dot" />). Co widać poniżej:
+					uwzględniono na mapce za pomocq symbolu (<span class="dot" ></span> ). Co widać poniżej:
 				</h2>
 			</div>
 
