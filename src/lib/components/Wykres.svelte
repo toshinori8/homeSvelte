@@ -1,5 +1,6 @@
 <script>
-	import { location } from '$lib/stores/appStore.jsx';
+	import { location } from '$lib/stores/appStore.js';
+	
 	import { onMount } from 'svelte';
 	import Loading from '$lib/components/loading.svelte';
 	import { dayjs } from 'svelte-time';
