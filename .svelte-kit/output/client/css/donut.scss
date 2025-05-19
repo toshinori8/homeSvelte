@@ -1,0 +1,230 @@
+.svg-item {
+  width: 100%;
+  font-size: 16px;
+  /* margin: 0 auto; */
+  animation: donutfade 0.3s;
+}
+
+@keyframes donutfade {
+  0% {
+      opacity: .2;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+
+@media (min-width: 992px) {
+  .svg-item {
+      width: 83%;
+  }
+}
+.donut-hole{stroke-width: 5.3;stroke: rgba(31, 40, 55, 1.000);}
+.donut-ring {
+  stroke: #ffffff;
+}
+
+.donut-segment {
+  /* transform-origin: center; */
+  stroke: #60cf5e;
+}
+
+.donut-percent {
+  animation: donutfadelong 0.3s;
+}
+
+@keyframes donutfadelong {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+
+
+@keyframes makeDonut {
+  from {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+}
+
+.bigWrapper {
+  /* margin: 0 auto; */
+  height: 300px;
+  /* display: flex; */
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.donutTarget {
+  display: inline-block;
+  vertical-align: top;
+}
+.donut {
+  transform: scale(0.8);
+  height: 83%;
+  width: 104%;
+  overflow: hidden;
+  position: relative;
+  margin: 0 0% -1% 0;
+  margin-top: -35px;
+  -webkit-box-shadow: 8px -2px 69px -47px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 8px -2px 69px -47px rgba(66, 68, 90, 1);
+  box-shadow: 8px -2px 69px -47px rgba(66, 68, 90, 1);
+  border-radius: 139px;
+}
+.donut::before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 1;
+  width: 50%;
+  height: 50%;
+  background: white;
+  border-radius: 50%;
+  top: 25%;
+  left: 25%;
+}
+.donut::after {
+  content: "";
+  display: block;
+  width: 60%;
+  height: 1%;
+  border-radius: 50%;
+  box-shadow: 0 0 1.5% 2% rgba(0, 0, 0, 0.1);
+  margin: 110% auto;
+}
+
+/*
+Change this width and height to determine the size of the donut. DIV MUST BE SQUARE unless you want to see some crazy stuff.
+*/
+
+.donutWrapper {
+  width: 70vw;
+  height: 70vw;
+  margin: 0 auto;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  float: left;
+}
+
+/*
+Mess with the media queries to see how things look on different device screens and viewports. I just have some example queries set up:
+*/
+
+@media screen and (min-width: 1000px) {
+  .donutWrapper {
+    width: 80vh;
+    height: 80vh;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .donutWrapper {
+    width: 55vh;
+    height: 55vh;
+  }
+}
+@media screen and (min-height: 1000px) {
+  .donutWrapper {
+    width: 50vh;
+    height: 50vh;
+  }
+}
+.legendWrapper {
+  /* display: block; */
+  /* margin: 20px; */
+  /* float: right; */
+  background: white;
+}
+.chunk {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(50% 50%, 100% 0%, 0% 0%, 0% 100%);
+  animation: makeDonut 1s;
+}
+.chunk span {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  clip-path: polygon(50% 50%, 100% 0%, 0% 0%, 0% 100%);
+}
+.legend {
+  /* list-style-type: none; */
+  /* padding: 0; */
+  /* background: #616063; */
+  /* padding: 15px; */
+  /* font-size: 13px; */
+  /* color: #ffffff; */
+  /* box-shadow: 1px 1px 0 #2c2c2d, 2px 2px 0 #2c2c2d; */
+  /* float: left; */
+}
+.legend li {
+  width: 110px;
+  /* height: 1.25em; */
+  margin-bottom: 0.7em;
+  /* padding-left: 0.5em; */
+  /* border-left: 1.25em solid black; */
+}
+.legend em {
+  /* font-style: normal; */
+}
+.legend span {
+  float: right;
+}
+
+
+
+
+
+.donut-text {
+
+  fill: #60cf5e;
+}
+.donut-text-1 {
+  font-size: 1.3em;
+  fill: #60cf5e;
+}
+
+
+.donut-label {
+  font-size: 0.28em;
+  font-weight: 700;
+  line-height: 1;
+  fill: #000;
+  transform: translateY(0.25em);
+}
+
+.donut-percent {
+  font-size: 0.5em;
+  margin-top: 12px;
+  padding-top: 20px;
+  line-height: 1;
+  transform: translateY(0.5em);
+  font-weight: bold;
+  position: absolute;
+}
+.donut-percent .percent{/* display: block; */font-size: 0.7em;/* width: 30px; */}
+
+.donut-data {
+  font-size: 0.12em;
+  line-height: 1;
+  transform: translateY(0.5em);
+  text-align: center;
+  text-anchor: middle;
+  color:#666;
+  fill: #666;
+  animation: donutfadelong 1s;
+}
+
+
+
+.svg-item {margin-top: -27px;padding: 0px;max-width: 31%;display:inline-block;}

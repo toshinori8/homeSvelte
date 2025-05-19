@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Warstwa_1" data-name="Warstwa 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 55 63">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #0fcf5e;
+        stroke-miterlimit: 22.93;
+        stroke-width: .57px;
+      }
+
+      <!-- .cls-2 {
+        filter: url(#drop-shadow-1);
+      } -->
+
+      .cls-2, .cls-3, .cls-4, .cls-5 {
+        stroke-width: 0px;
+      }
+
+      .cls-2, .cls-5 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        fill: #58f9a2;
+      }
+
+      .cls-4 {
+        fill: #30cf79;
+      }
+    </style>
+    <!-- <filter id="drop-shadow-1" filterUnits="userSpaceOnUse">
+      <feOffset dx="1" dy="-1"/>
+      <feGaussianBlur result="blur" stdDeviation="5"/>
+      <feFlood flood-color="#000" flood-opacity=".35"/>
+      <feComposite in2="blur" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter> -->
+  </defs>
+  <path class="cls-2" d="m28.73,17.38l3.94,2.27c.08.04.15.09.22.14l3.74,2.16c1.39.8,2.16,2.25,2.16,3.74h.02v9.2c0,1.75-1.04,3.25-2.53,3.94l-3.62,2.09h0s-3.93,2.28-3.93,2.28l-2.27,5.73-2.3-5.81-3.79-2.19c-.08-.04-.15-.09-.22-.14l-3.74-2.16c-1.39-.8-2.16-2.25-2.16-3.74h-.02v-9.2c0-1.75,1.04-3.25,2.53-3.94l3.62-2.09h0s3.98-2.31,3.98-2.31c1.4-.81,3.07-.75,4.37.03Z"/>
+  <path class="cls-1" d="m28.73,17.38l3.94,2.27c.08.04.15.09.22.14l3.74,2.16c1.39.8,2.16,2.25,2.16,3.74h.02v9.2c0,1.75-1.04,3.25-2.53,3.94l-3.62,2.09h0s-3.93,2.28-3.93,2.28l-2.27,5.73-2.3-5.81-3.79-2.19c-.08-.04-.15-.09-.22-.14l-3.74-2.16c-1.39-.8-2.16-2.25-2.16-3.74h-.02v-9.2c0-1.75,1.04-3.25,2.53-3.94l3.62-2.09h0s3.98-2.31,3.98-2.31c1.4-.81,3.07-.75,4.37.03Z"/>
+  <g id="Warstwa_1-2" data-name="Warstwa_1">
+    <polygon class="cls-5" points="29.36 31.63 29.36 34.99 31.99 36.5 31.99 30.12 29.36 31.63"/>
+    <polygon class="cls-4" points="26.52 39.66 29.36 38.02 29.36 31.63 31.99 30.12 31.99 36.5 34.61 34.99 34.61 25.65 31.07 27.69 26.52 30.32 26.52 39.66"/>
+    <polygon class="cls-4" points="21.05 30.12 21.05 36.5 23.67 34.99 23.67 31.63 21.05 30.12"/>
+    <polygon class="cls-5" points="21.05 30.12 23.67 31.63 23.67 38.02 26.52 39.66 26.52 30.32 18.42 25.65 18.42 34.99 21.05 36.5 21.05 30.12"/>
+    <path class="cls-3" d="m23.72,25.65l2.79-1.61,2.79,1.61-2.79,1.61-2.79-1.61Zm10.88,0h0l-8.09-4.67-8.09,4.67,8.09,4.67,4.55-2.63,3.54-2.04Z"/>
+    <polygon class="cls-4" points="26.52 24.03 23.72 25.65 26.52 27.26 26.52 24.03"/>
+    <polygon class="cls-5" points="29.31 25.65 26.52 24.03 26.52 27.26 29.31 25.65"/>
+  </g>
+</svg>

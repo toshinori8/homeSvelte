@@ -1,0 +1,15 @@
+{
+	"/": [
+		"src/routes/+page.js",
+		"src/routes/+layout.js",
+		"src/routes/+layout.js"
+	],
+	"/protected": [
+		"src/routes/protected/+page.js",
+		"src/routes/+layout.js"
+	],
+	"/protected/data": [
+		"src/routes/protected/data/+page.js",
+		"src/routes/+layout.js"
+	]
+}
