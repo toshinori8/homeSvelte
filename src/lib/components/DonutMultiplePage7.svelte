@@ -4,7 +4,7 @@
 	import { select, arc, pie } from 'd3';
 	import * as d3 from 'd3';
 	import { browser } from '$app/environment';
-	import addImage from '$lib/components/addImage.svg';
+	// import addImage from '$lib/components/addImage.svg';
 	import { draggable } from '@neodrag/svelte';
 
 	import { MoveIcon, SortableItem } from 'svelte-sortable-items';
@@ -12,7 +12,7 @@
 
 	import Filelist from '$lib/components/Filelist.svelte';
 	let showFileList = false;
-	let imageSrc = addImage;
+	// let imageSrc = addImage;
 	let currentData;
 	// Funkcja obsługująca kliknięcie na obrazek i pokazująca listę plików
 	function handleImageClick(e) {
@@ -510,7 +510,17 @@
 			>
 
 			<div class="addDataBoxs">
-				<img class="mini" src={imageSrc} on:click={(e) => handleImageClick(e)} />
+			
+				<svg   on:click={(e) => handleImageClick(e)} xmlns="http://www.w3.org/2000/svg" class="mini"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 200 250" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+    <g>
+        <path fill="rgba(0,0,0,0.2)" d="M121.2,43.8c-23.5-9-51.2-1.7-67.3,17.7c-16.1,19.5-18.4,47.1-5.8,68.8c10.9,18.5,31,29.7,52.1,29.7   c3.4,0,6.8-0.3,10.2-0.9c28.1-4.8,49-29.7,49.6-59.1C159.5,74.7,144.3,52.6,121.2,43.8z M148.9,100c-0.4,20.8-12.9,38.8-31.8,45.8   c-19.3,7.2-41.2,1.4-54.6-14.4c-16-18.9-12.7-41.1-4.3-55.6c9.1-15.6,24.9-24.8,41.8-24.8c2.8,0,5.7,0.3,8.6,0.8   C131.5,56.1,148.4,76.3,148.9,100z"/>
+        <path fill="rgba(255,250,250,0.4)" d="M129.7,94h-25V69c0-3.6-2.8-5.4-5.6-5.4c-2.8,0-5.6,1.9-5.6,5.4v25h-25c-3.6,0-5.4,2.8-5.4,5.6c0,2.8,1.9,5.6,5.4,5.6h25   v25c0,3.6,2.8,5.4,5.6,5.4c2.8,0,5.6-1.9,5.6-5.4v-25h25c3.6,0,5.4-2.8,5.4-5.6C135.1,96.8,133.3,94,129.7,94z"/>
+    </g>
+</svg>
+
+
+
 				<input class="dataName" contenteditable="true" bind:value={newValues.name} />
 				<input class="dataValue" contenteditable="true" bind:value={newValues.val} />
 				<button class="addButton" on:click={addData}>+</button>
@@ -527,13 +537,21 @@
 							<MoveIcon propSize={22} />
 							<!-- svelte-ignore a11y-click-events-have-key-events -->
 							<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-							<img
-								alt="imageSrc"
-								class="mini"
-								src={imageSrc}
-								on:click={handleImageClick}
-								dataVal={numberCounter}
-							/>
+							
+							
+							<svg on:click={handleImageClick}
+							dataVal={numberCounter} xmlns="http://www.w3.org/2000/svg" class="mini"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 200 250" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+    <g>
+        <path fill="rgba(0,0,0,0.2)" d="M121.2,43.8c-23.5-9-51.2-1.7-67.3,17.7c-16.1,19.5-18.4,47.1-5.8,68.8c10.9,18.5,31,29.7,52.1,29.7   c3.4,0,6.8-0.3,10.2-0.9c28.1-4.8,49-29.7,49.6-59.1C159.5,74.7,144.3,52.6,121.2,43.8z M148.9,100c-0.4,20.8-12.9,38.8-31.8,45.8   c-19.3,7.2-41.2,1.4-54.6-14.4c-16-18.9-12.7-41.1-4.3-55.6c9.1-15.6,24.9-24.8,41.8-24.8c2.8,0,5.7,0.3,8.6,0.8   C131.5,56.1,148.4,76.3,148.9,100z"/>
+        <path fill="rgba(255,250,250,0.4)" d="M129.7,94h-25V69c0-3.6-2.8-5.4-5.6-5.4c-2.8,0-5.6,1.9-5.6,5.4v25h-25c-3.6,0-5.4,2.8-5.4,5.6c0,2.8,1.9,5.6,5.4,5.6h25   v25c0,3.6,2.8,5.4,5.6,5.4c2.8,0,5.6-1.9,5.6-5.4v-25h25c3.6,0,5.4-2.8,5.4-5.6C135.1,96.8,133.3,94,129.7,94z"/>
+    </g>
+</svg>
+
+					
+
+
+							
 							<input class="name" contenteditable="true" bind:value={data[numberCounter].name} />
 							<input class="val" contenteditable="true" bind:value={data[numberCounter].val} />
 							<button class="removeButton" on:click={() => removeData(numberCounter)}>x</button>
