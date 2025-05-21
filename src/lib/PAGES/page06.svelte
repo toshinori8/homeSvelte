@@ -2,27 +2,15 @@
 	import { onMount } from 'svelte';
 	import Header from '$lib/components/header.svelte';
 	import Loading from '$lib/components/loading.svelte';
-	import { location } from '$lib/stores/appStore.js';
+	import { location } from '$lib/stores/appStore';
 	import RangeSlider from 'svelte-range-slider-pips';
 	import MapaDots from '$lib/components/mapaDots.svelte';
 	import Ramka from '$lib/components/ramka.svelte';
-	import CityPolygon from '$lib/components/cityPolygon.svelte';
 
 
 </script>
 
-
-
-
-zzzzz
-<CityPolygon/>
-
-
-
 <div class="content-block section page_05 page_06">
-
-
-
 
 	<Header />
 
@@ -83,7 +71,9 @@ zzzzz
 			<div class="grid_content POI_conteiner">
 				
 				<div class="POI_map">
-					<MapaDots bind:address={$location.adres}/>
+					<MapaDots/>
+		
+					
 				</div>
 				<div class="POI_opis">
 					<br /><br /><br />
@@ -96,6 +86,7 @@ zzzzz
 				</div>
 			</div>
 		</div>
+		
 		<div class="pageNumber right">6</div>
 	</div>
 

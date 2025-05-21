@@ -1,0 +1,51 @@
+{
+    "POIelementsDisplay": [1, 2, 3],
+    "answers": {
+      "STANDARD": {
+        "0": "do odświeżenia",
+        "1": "do remontu",
+        "2": "do kapitalnego remontu",
+        "3": "przeciętny",
+        "4": "wysoki",
+        "5": "premium",
+        "6": "custom"
+      },
+      "bool": {
+        "1": "tak",
+        "0": "brak"
+      },
+      "PARKING": {
+        "0": "brak",
+        "1": "dostęp ogólny",
+        "2": "przypisane do nieruchomości"
+      },
+      "KSIEGA": {
+        "1": "brak",
+        "2": "brak informacji",
+        "3": "#"
+      },
+      "RODZAJ": {
+        "1": "kamienica",
+        "2": "blok",
+        "3": "dom jednorodzinny",
+        "4": "inny"
+      },
+      "RYNEK": {
+        "1": "wtórny",
+        "2": "pierwotny"
+      },
+      "ROK_POWSTANIA": {
+        "1": "lata 40",
+        "2": "lata 50",
+        "3": "lata 60",
+        "4": "lata 70",
+        "5": "lata 80",
+        "6": "lata 90",
+        "7": "2000-2010",
+        "8": ""
+      }
+    },
+    "distanceNear": 5,
+    "distanceNearPOI": 50000
+  }
+  

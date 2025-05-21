@@ -39,12 +39,12 @@
 </script>
 
 <div class='cont__main'>
-	<select bind:this={selectEl} on:change={selectChangedHandler}>
+	<select  bind:this={selectEl} on:change={selectChangedHandler}>
 		<slot />
 	</select> 
 	<input type="text" bind:this={inputEl} />
 	<!-- svelte-ignore a11y-positive-tabindex -->
-	<i on:click={() => inputEl.focus()} on:keypress={()=>{}} role="button" tabindex=1> </i>
+	<i on:click={() => inputEl.focus()} on:keypress={()=>{}} role="button" tabindex=1/>
 </div>
 
 <style>

@@ -3,13 +3,17 @@
 	import Header from '$lib/components/header.svelte';
 	import Loading from '$lib/components/loading.svelte';
 	// import Slidericon from '$lib/components/slidericon.svg';
-	import { location } from '$lib/stores/appStore.js';
+	import { location,poiReady } from '$lib/stores/appStore';
 
 	import RangeSlider from 'svelte-range-slider-pips';
+
+	
+
 
 	onMount(async () => {
 		// console.log($location.params?.POI);
 	});
+	let przelicz = false;
 </script>
 
 <div class="content-block section page_05">
@@ -71,21 +75,24 @@
 
 			<div class="full-width grid_content">
 				<div class="POI">
-					{#if $location.params?.POI}
-						{#each Object.entries($location.params.POI).filter( ([key, value]) => [2, 5, 6, 7, 8, 9, 10, 11].includes(value.id) ) as [key, POI]}
-							<div class="grid_content">
-								<div class="image_"><img src="/images/POI/{POI.icon}" alt="{POI.name}" /></div>
+					{#if $location.params?.POI && $poiReady==true}
+						{#each Object.entries($location.params.POI).filter(([key, value]) => []) as [key, POI]}
+							{#if POI.by_bike.distance <= 2000 && POI.by_bike.distance > 1}
+								<div class="grid_content">
+									<div class="image_"><img src="/images/POI/{POI.icon}" alt={POI.name} /></div>
 
-								<div class="POI_opis">
-									<hr class="hr_green" />
+									<div class="POI_opis">
+										<p class="name">{POI.displayName}</p>
+										<hr class="hr_green" />
 
-									<br />
+										<br />
 
-									<p class="name">{POI.name}</p>
+										<p class="name2">{POI.name}</p>
 
-									<p class="dist">{POI.dist}</p>
+										<p class="dist font-extrabold">{POI.by_bike.distance.toFixed(0)} m</p>
+									</div>
 								</div>
-							</div>
+							{/if}
 						{/each}
 					{/if}
 				</div>

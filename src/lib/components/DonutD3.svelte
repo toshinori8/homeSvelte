@@ -50,8 +50,7 @@
 		on:click={() => {
 			active = !active;
 		}}
-	>
-	</div>
+	/>
 {/if}
 <div class="svg-item">
 	<svg style:color viewBox="-70 -70 140 140">
@@ -157,7 +156,18 @@
 
 
 	}
-	
+	.options {
+		display: none;
+		input[type='number']::-webkit-inner-spin-button,
+		input[type='number']::-webkit-outer-spin-button {
+			opacity: 1;
+		}
+		input {
+			opacity: 0.6;
+			font-size: 25px;
+			background: none !important;
+		}
+	}
 
 	.options.active {
 		text-align: center;

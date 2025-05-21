@@ -16,8 +16,8 @@
 .bigWrapper .close{
     position: absolute;
     width: 30px;
-    margin-left: -164px;
-    margin-top: -32px;
+    margin-left: -153px;
+    margin-top: 8px;
     height: 30px;
     background: ghostwhite;
     border: 3.2px solid rgba(0,0,0,0.3);
@@ -26,7 +26,7 @@
     -webkit-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
     -moz-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
     box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 0.5);
-   transition: all 0.2s linear;
+    transition: all 0.2s linear;
 }
 .bigWrapper .close:hover{
 
@@ -46,10 +46,13 @@ button.addButton:hover, button.removeButton:hover {
   /* display: inline-block; */
   /* vertical-align: top; */
 }
-.donutTarget input{max-width: 30%;}
+.donutTarget input:first-child{
+  min-width: 86%;
+}
+.donutTarget input{/* max-width: 36%; */min-width: 24%;}
 .donut {
   height: 100%;
-  /* width: 100%; */
+  width: 100%;
   position: relative;
   margin-left: -76px !important;
   border-radius: 0px;
@@ -158,56 +161,26 @@ button.addButton:hover, button.removeButton:hover {
 .removeButton {
   background-color: rgba(226, 226, 226, 0.1);
   border-radius: 13px;
-  width: 19px;
+  width: 25px;
+  background-color: red;
+  padding: 0px;
+  height: 14px;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 0px;
+  padding-bottom: 19px;
 }
 
 .legendWrapper .addDataBox {
 
-  .dataName {
-    min-width: 134px;
-    margin-left: 8px;
-    background-color: rgba(66, 68, 90, 0.2);
-    text-align: left;
-    border-radius: 8px;
-    text-align: left;
-    vertical-align: inherit;
+  .dataName {min-width: 172;margin-left: 14px;: 8px;background-color: rgba(66, 68, 90, 0.2);text-align: left;border-radius: 8px;text-align: left;vertical-align: inherit;
   }
 
-  .addButton {
-    -webkit-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
-    -moz-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
-    box-shadow: 1px 2px 5px 0px rgba(66, 68, 90, 1);
-    position: relative;
-    display: block;
-    background-color: rgba(200,200,200,0.9);
-    width: 42px;
-    height: 33px;
-    /* padding: 9px; */
-    padding-left: 12px;
-    border-radius: 59px;
-    padding-right: 11px;
-    vertical-align: baseline;
-    margin-left: -11px;
+  .addButton {-webkit-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);-moz-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);box-shadow: 1px 2px 5px 0px rgba(66, 68, 90, 1);position: relative;display: block;background-color: rgba(200,200,200,0.9);width: 42px;height: 33px;/* padding: 9px; */padding-left: 12px;border-radius: 59px;padding-right: 11px;vertical-align: baseline;margin-left: -11px;
   }
 
-  .dataValue {
-    max-width: 85px;
-    padding: 6px;
-}
-
-  padding-top: 8px;
-  background: rgba(20, 20, 20, 0.1);
-  width: 238px;
-  display: flex;
-  flex-direction: row;
-  border-radius: 12px 12px 0px 0px;
-  -webkit-box-shadow: inset -3px -4px 61px -27px rgba(66, 68, 90, 1);
-  -moz-box-shadow: inset -3px -4px 61px -27px rgba(66, 68, 90, 1);
-  box-shadow: inset -3px -4px 61px -27px rgba(66, 68, 90, 1);
-  justify-content: space-between;
-  padding-bottom: 8px;
-  align-items: center;
-}
+  .dataValue {max-width: 85px;padding: 6px;
+}padding-top: 8px;background: rgba(20, 20, 20, 0.1);width: 243px !i;display: flex;flex-direction: row;border-radius: 12px 12px 0px 0px;-webkit-box-shadow: inset -3px -4px 61px -27px rgba(66, 68, 90, 1);-moz-box-shadow: inset -3px -4px 61px -27px rgba(66, 68, 90, 1);box-shadow: inset -3px -4px 61px -27px rgba(66, 68, 90, 1);justify-content: space-between;padding-bottom: 8px;align-items: center;}
 
 
 .donutWrapper {
@@ -254,8 +227,8 @@ button.addButton:hover, button.removeButton:hover {
   /* float: right; */
   border-radius: 20px 20px;
   z-index: 999999999;
-  margin-top: -143px;
-  margin-left: 278px;
+  margin-top: -34px;
+  margin-left: -63px;
   -webkit-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
   -moz-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
   box-shadow: 0px -2px 32px 8px rgba(66, 68, 90, 0.2);
@@ -282,7 +255,7 @@ button.addButton:hover, button.removeButton:hover {
 }
 
 .legend {
-  width: 238px;
+  width: 243px;
   border-radius: 0px 0px 14px;
   /* list-style-type: none; */
   padding: 0;

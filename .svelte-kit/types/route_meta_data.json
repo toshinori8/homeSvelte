@@ -2,17 +2,21 @@
 	"/": [
 		"src/routes/+page.js",
 		"src/routes/+layout.js",
-		"src/routes/+layout.js"
+		"src/routes/+layout.server.js",
+		"src/routes/+layout.js",
+		"src/routes/+layout.server.js"
 	],
 	"/api": [
 		"src/routes/api/+server.ts"
 	],
 	"/protected": [
 		"src/routes/protected/+page.js",
-		"src/routes/+layout.js"
+		"src/routes/+layout.js",
+		"src/routes/+layout.server.js"
 	],
 	"/protected/data": [
 		"src/routes/protected/data/+page.js",
-		"src/routes/+layout.js"
+		"src/routes/+layout.js",
+		"src/routes/+layout.server.js"
 	]
 }

@@ -1,5 +1,4 @@
 <script>
-
 	import { onMount, afterUpdate } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { select, arc, pie } from 'd3';
@@ -60,11 +59,12 @@
 			'rgb(6,233,173)',
 			'rgb(149,251,15)'
 		];
-
 		const pieChart = pie().value((d) => d.val);
 		const arcChart = arc()
 			.innerRadius(radius - 40)
 			.outerRadius(radius);
+
+		const centerPie = { x: width / 2, y: height / 2 };
 
 		const arcs = donutElement
 			.selectAll('.arc')
@@ -87,22 +87,36 @@
 					return arcChart(interpolateFn(t));
 				};
 			});
-
+		let margin = { left: 90, right: -70, top: 2, bottom: 2 };
 		const textLabels = arcs
 			.append('text')
 			.text((d) => d.data.val + ' %')
 			.attr('transform', function (d) {
 				const pos = arcChart.centroid(d);
-				const midangle = d.startAngle + (d.endAngle - d.startAngle) / 2;
-				pos[0] = radius * labelOffset * (midangle < Math.PI ? 1 : -1);
-				pos[1] = pos[1] - labelOffset + 7;
 				return `translate(${pos})`;
 			})
 			.style('text-anchor', function (d) {
 				const midangle = d.startAngle + (d.endAngle - d.startAngle) / 2;
-				return midangle < Math.PI ? 'start' : 'end';
+				return midangle < Math.PI ? 'end' : 'start';
+			})
+			.each(function (d) {
+				const box = this.getBBox();
+				let transform = d3.select(this).attr('transform'); // Pobranie wartości transform
+				let translate = transform
+					.substring(transform.indexOf('(') + 1, transform.indexOf(')'))
+					.split(',');
+				let x = parseFloat(translate[0]);
+				let y = parseFloat(translate[1]);
+
+				if (x < 0) {
+					d3.select(this).attr('y', y - 2);
+					d3.select(this).attr('x', margin.right).style('text-anchor', 'end');
+				} else {
+					d3.select(this).attr('y', y - 0);
+					d3.select(this).attr('x', margin.left).style('text-anchor', 'start');
+				}
 			});
-		// TODO opisy name ponad procentami
+
 		// lewa prawa align tekstu
 
 		// Dodane kropki
@@ -113,28 +127,34 @@
 			.style('fill', (d, i) => color[i])
 			.append('tspan')
 			.text((d) => ' ' + d.data.name) // Display the value next to the percentage
-			.style('font-size', '12px')
+			.style('font-size', '17px')
 			.style('fill', (d, i) => color[i])
-			.attr('dy', '1em');
+			.attr('dy', '1em')
+			.attr('dy', '1em')
+			.each(function (d) {
+				const self = d3.select(this); // Refers to the 'tspan' this code is dealing with
+				const bbox = self.node().getBBox();
 
-		// 			svg
-		//   .append("line")
-		//   .attr("x1", centerX)
-		//   .attr("y1", 0)
-		//   .attr("x2", centerX)
-		//   .attr("y2", height)
-		//   .attr("stroke", "black")
-		//   .attr("stroke-width", 1);// Adjust the vertical position
-		// TODO dodac opis obok procentu z data.name
-		// t/extLabels
-		// .classed('tspan', true)
-		// 	.append('tspan')
-		// 	.text((d) => ' ' + d.data.name) // Display the value next to the percentage
-		// 	.style('font-size', '12px')
-		// 	.style('fill', (d, i) => color[i])
-		// 	.attr('dy', '1em'); // Adjust the vertical position
+				let x = bbox.x;
+				let y = bbox.y;
+
+				console.log(x, y, self._groups[0]);
+
+				if (x < 0) {
+					self
+						// .attr('y', y + 10)
+						.attr('x', margin.right-53)
+						.style('text-anchor', 'start');
+				} else if(x>0) {
+					self
+						// .attr('y', y - 0)
+						.attr('x', margin.left)
+						// .style('text-anchor', 'start');
+				}
+			});
 
 		// Dodane linie
+
 		arcs
 			.append('line')
 			.attr('stroke-width', lineThickness)
@@ -151,43 +171,67 @@
 			.attr('x2', function (d) {
 				const pos = arcChart.centroid(d);
 				const midangle = d.startAngle + (d.endAngle - d.startAngle) / 2;
-				return pos[0] + (midangle < Math.PI ? 1 : -1) * lineLength1;
+				return pos[0] + (midangle < Math.PI ? window.innerWidth : -1) * lineLength1 * 4; // Multiply lineLength1 by 2 to make the line longer
 			})
 			.attr('y2', function (d) {
 				const pos = arcChart.centroid(d);
 				return pos[1];
+			})
+			.each(function (d) {
+				const box = this.getBBox();
+				const x = d3.select(this).attr('x1');
+				const y = d3.select(this).attr('y1');
+
+				console.log(centerPie, x);
+				if (x < 0) {
+					console.log('lewa linia');
+
+					// d3.select(this).select('text').attr('x', margin.left).style('text-anchor', 'start');
+				} else {
+					console.log('prawa linia');
+				} // if (x - box.width < margin.left) {
+				//   d3.select(this).attr('x', margin.left).style('text-anchor', 'start');
+				// } else if (x + box.width > width - margin.right) {
+				//   d3.select(this).attr('x', width - margin.right).style('text-anchor', 'end');
+				// }
 			});
 
-		adjustSVGElementsPosition();
+		// dodanie pionowej liniii
+		donutElement
+			.append('line')
+			.attr('x1', centerPie.x) // Początek linii w połowie szerokości
+			.attr('y1', 0) // Początek linii na górze
+			.attr('x2', centerPie.x) // Koniec linii również w połowie szerokości (linia pionowa)
+			.attr('y2', centerPie.y) // Koniec linii na dole
+			.style('stroke', 'black') // Kolor linii
+			.style('stroke-width', 5); // Szerokość linii
+
+		// adjustSVGElementsPosition();
 	}
 
-	function adjustSVGElementsPosition() {
-		const svgElements = document.querySelectorAll('svg.donutTarget.donut *');
-		let minX = 0;
+	// function adjustSVGElementsPosition() {
+	// 	const svgElements = document.querySelectorAll('svg.donutTarget.donut *');
+	// 	let minX = 0;
 
-		svgElements.forEach((element) => {
-			const xValue = parseFloat(element.getAttribute('x')) || 0;
-			minX = Math.min(minX, xValue);
-		});
+	// 	svgElements.forEach((element) => {
+	// 		const xValue = parseFloat(element.getAttribute('x')) || 0;
+	// 		minX = Math.min(minX, xValue);
+	// 	});
 
-		if (minX < 0) {
-			const shiftValue = 20;
-			svgElements.forEach((element) => {
-				let xValue = parseFloat(element.getAttribute('x')) || 0;
-				xValue += shiftValue;
+	// 	if (minX < 0) {
+	// 		const shiftValue = 120;
+	// 		svgElements.forEach((element) => {
+	// 			let xValue = parseFloat(element.getAttribute('x')) || 0;
+	// 			xValue += shiftValue;
 
-				element.setAttribute('x', xValue);
-			});
-		}
-	}
+	// 			element.setAttribute('x', xValue);
+	// 		});
+	// 	}
+	// }
 
 	let labelOffset = 1.49; // Domyślne odsunięcie
 	let lineLength1 = 60;
-	let lineLength2 = 90;
-	let lineThickness = 3;
-	let lineTextOffset = 20;
-	let polowa = 20;
-	let odlegloscNaZewnatrz = 20;
+	let lineThickness = 4;
 
 	let open = false;
 </script>

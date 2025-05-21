@@ -258,7 +258,7 @@ function Header($$payload, $$props) {
   onDestroy(() => {
     store_set(menuVisible, true);
   });
-  $$payload.out += `<header aria-hidden="true"><p class="p_header noselect">WYCENA WARTOŚCI nieruchomości</p> <img class="logotyp_header noselect" src="/images/logotyp_header.svg" alt="logotyp"></header>`;
+  $$payload.out += `<header aria-hidden="true"><p class="p_header noselect">WYCENA WARTOŚCI nieruchomości</p> <img class="logotyp_header noselect" src="/images/logotyp_header.png" alt="logotyp"></header>`;
   pop();
 }
 function Page00($$payload, $$props) {

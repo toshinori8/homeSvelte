@@ -1,0 +1,305 @@
+@keyframes makeDonut {
+  from {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+}
+
+.wykres .bigWrapperpage7 {
+  margin: 0 auto;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.wykres .bigWrapperpage7 .close {
+  position: absolute;
+  width: 30px;
+  margin-left: -225px;
+  margin-top: 8px;
+  height: 30px;
+  background: ghostwhite;
+  border: 3.2px solid rgba(0, 0, 0, 0.3);
+  border-radius: 17px;
+  color: red;
+  -webkit-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+  box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 0.5);
+  transition: all 0.2s linear;
+}
+
+.wykres .bigWrapperpage7 .close:hover {
+
+  color: white;
+  background-color: red;
+
+}
+
+button.addButton:hover,
+button.removeButton:hover {
+  color: white;
+  background-color: red;
+  transition: all 0.2s linear;
+}
+
+.page_08{
+.donutTarget {
+  /* display: inline-block; */
+  /* vertical-align: top; */
+}
+
+.donutTarget input:first-child {
+  min-width: 86%;
+}
+
+.donutTarget input {
+  /* min-width: 13%; */
+  /* float: right; */
+}
+
+.donut {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  margin-left: -76px !important;
+  border-radius: 0px;
+}
+
+.donut::before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 1;
+  width: 50%;
+  height: 50%;
+  background: white;
+  border-radius: 50%;
+  top: 25%;
+  left: 25%;
+}
+
+.donut::after {
+  content: "";
+  display: block;
+  width: 60%;
+  height: 1%;
+  border-radius: 50%;
+  box-shadow: 0 0 1.5% 2% rgba(0, 0, 0, 0.1);
+  margin: 110% auto;
+}
+
+.donutWrapper {
+  position: relative;
+}
+
+.donutWrapper {
+
+  .opis {
+    display: flex;
+    width: 351px;
+    height: 311px;
+    position: absolute;
+    margin-right: -183px;
+    background-color: rgba(20, 20, 20, 0.2);
+    z-index: 99;
+    margin-top: -344px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-around;
+    flex-direction: column;
+    text-align: left;
+    align-items: flex-end;
+
+
+
+  }
+
+  .opisName {
+    width: 50%;
+    height: 58px;
+  }
+
+  .dot {
+    width: 108px;
+    height: 6px;
+    background: rebeccapurple;
+    position: absolute;
+    z-index: 999999999999;
+    left: 20%;
+    /* margin-left: 119px; */
+  }
+
+}
+
+.chart-element {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 50px;
+  background-color: #333;
+  /* Dostosuj kolor według potrzeb */
+  transform-origin: top;
+  transform: translateX(-50%) translateY(-100%);
+  z-index: 1;
+  // border: solid gray 2px;
+}
+
+.line {
+  width: 100%;
+  height: 2px;
+  background-color: #333;
+  /* Dostosuj kolor według potrzeb */
+}
+
+.label {
+  text-align: center;
+  margin-top: 5px;
+  color: #333;
+  /* Dostosuj kolor według potrzeb */
+}
+
+.donutWrapper dot {
+
+  transition: all ease 0.4s;
+
+}
+
+.removeButton {
+  background-color: rgba(226, 226, 226, 0.1);
+  border-radius: 13px;
+  width: 25px;
+  background-color: red;
+  padding: 0px;
+  height: 14px;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 0px;
+  padding-bottom: 19px;
+}
+
+.legendWrapper .addDataBox {
+
+  .dataName {min-width: 172;margin-left: 14px;background-color: rgba(66, 68, 90, 0.2);text-align: left;border-radius: 8px;text-align: left;vertical-align: inherit;
+  }
+
+  .addButton {-webkit-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);-moz-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);box-shadow: 1px 2px 5px 0px rgba(66, 68, 90, 1);position: relative;display: block;background-color: rgba(200, 200, 200, 0.9);width: 42px;height: 33px;/* padding: 9px; */padding-left: 12px;border-radius: 59px;padding-right: 11px;vertical-align: baseline;margin-left: -11px;
+  }
+
+  .dataValue {max-width: 85px;padding: 6px;
+  }padding-top: 8px;background: rgba(20, 20, 20, 0.1);width: 26px;display: flex;flex-direction: row;border-radius: 12px 12px 0px 0px;-webkit-box-shadow: inset -3px -4px 61px -27px rgba(66, 68, 90, 1);-moz-box-shadow: inset -3px -4px 61px -27px rgba(66, 68, 90, 1);box-shadow: inset -3px -4px 61px -27px rgba(66, 68, 90, 1);justify-content: space-between;padding-bottom: 8px;align-items: center;}
+
+
+.donutWrapper {
+  width: 70vw;
+  height: 70vw;
+  margin: 0 auto;
+  display: block;
+  /* position: relative; */
+  /* overflow: hidden; */
+  /* float: left; */
+}
+
+@media screen and (min-width: 1000px) {
+  .donutWrapper {
+    width: 80vh;
+    height: 80vh;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .donutWrapper {
+    width: 55vh;
+    height: 55vh;
+  }
+}
+
+@media screen and (min-height: 1000px) {
+  .donutWrapper {
+    /* position: absolute; */
+    width: 786px !important;
+    height: 405px;
+    margin-top: 0px;
+    padding: 3px;
+    // border: 1px solid;
+    top: 42px;
+    left: -5px;
+  }
+}
+
+.legendWrapper {
+  width: 370px;
+  /* display: block; */
+  position: absolute;
+  /* margin: 20px; */
+  /* float: right; */
+  border-radius: 20px 20px;
+  z-index: 999999999;
+  margin-top: -34px;
+  margin-left: -63px;
+  -webkit-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+  box-shadow: 0px -2px 32px 8px rgba(66, 68, 90, 0.2);
+}
+
+.chunk {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(50% 50%, 100% 0%, 0% 0%, 0% 100%);
+  animation: makeDonut 1s;
+}
+
+.chunk span {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  clip-path: polygon(50% 50%, 100% 0%, 0% 0%, 0% 100%);
+}
+
+.legend {
+  width: 100%;
+  border-radius: 0px 0px 0px;
+  /* list-style-type: none; */
+  padding: 0;
+  display: flex;
+  background: #616063;
+  padding: 15px;
+  font-size: 13px;
+  color: #ffffff;
+  /* box-shadow: 1px 1px 0 #2c2c2d, 2px 2px 0 #2c2c2d; */
+  /* float: left; */
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: space-between;
+}
+
+.legend li {
+  /* width: 100%; */
+  display: flex;
+  /* height: 1.25em; */
+  /* margin-bottom: 0.7em; */
+  /* padding-left: 0.5em; */
+  /* border-left: 1.25em solid black; */
+  flex-direction: row;
+  /* align-items: center; */
+  justify-content: space-around;
+}
+
+.legend em {
+  font-style: normal;
+  width: 50%;
+  text-align: left;
+}
+
+.legend span {
+  float: right;
+}
+}

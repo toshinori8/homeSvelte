@@ -1,15 +1,14 @@
 <script>
-	import { location } from '$lib/stores/appStore.js';
-	
+	import { location } from '$lib/stores/appStore';
 	import { onMount } from 'svelte';
 	import Loading from '$lib/components/loading.svelte';
 	import { dayjs } from 'svelte-time';
 	import * as d3 from 'd3';
 	// import { tick } from 'svelte';
 
-	let margin = { top: 10, right: 90, bottom: 50, left: 60 },
-		width = 760 - margin.left - margin.right,
-		height = 500 - margin.top - margin.bottom;
+	let margin = { top: 10, right: 0, bottom: 50, left: 60 },
+		width = 800 - margin.left - margin.right,
+		height = 510 - margin.top - margin.bottom;
 	let mode;
 	let ready = false;
 	let datax = [];
@@ -63,12 +62,35 @@
 		var g = svg.append('g').attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
 		x.domain(labels);
-		y.domain([
-			0,
-			d3.max(datax, function (d) {
-				return d.value;
-			})
-		]);
+
+		let actualValue = $location.params.M2_PRICE;
+		let dataY = datax.slice();
+		let isActualPresent = dataY.some(function (d) {
+			return d.timeLabel === 'actual';
+		});
+		if (!isActualPresent) {
+			let tempo = {
+				timeLabel: 'actual',
+				value: actualValue // Ustaw aktualną wartość
+			};
+			dataY.push(tempo);
+		}
+		let maxValue = d3.max(dataY, function (d) {
+			return d.timeLabel !== 'actual' ? d.value : null;
+		});
+		if (actualValue > maxValue) {
+			maxValue = actualValue;
+		}
+
+		y.domain([0, maxValue]);
+
+		// y.domain([
+		// 	0,
+		// 	d3.max(datax, function (d) {
+
+		// 		return d.value;
+		// 	})
+		// ]);
 
 		g.append('g')
 			.attr('class', 'axis axis--x')
@@ -117,8 +139,17 @@
 			.attr('x', function (d) {
 				return x(d.timeLabel) + x.bandwidth() / 2;
 			})
-			.attr('y', function (d) {
-				return y(d.value); // Ustaw opis powyżej punktu
+
+			.attr('y', function (d, i) {
+				const dot = d3.select('#dot_wk_' + i);
+				const isCloseToXAxis = y(d.value) < 60; // Dostosuj tę wartość do swoich potrzeb
+
+				if (isCloseToXAxis) {
+					console.log(isCloseToXAxis);
+					return y(d.value) + 45;
+				} else {
+					return y(d.value) - 30;
+				}
 			})
 			.text(function (d) {
 				const numericValue = parseFloat(d.value);
@@ -126,24 +157,7 @@
 			})
 			.style('text-anchor', 'middle')
 			.style('font-size', '12px')
-			.style('fill', 'var(--brand-green')
-			.attr('transform', function (d) {
-				// Sprawdź, czy tekst jest blisko osi X
-				const isCloseToXAxis = y(d.value) < 60; // Dostosuj tę wartość do swoich potrzeb
-
-				// Obrót tekstu o 90 stopni, jeśli jest blisko osi X
-				if (isCloseToXAxis) {
-					return (
-						'rotate(-90 ' + (x(d.timeLabel) - 32 + x.bandwidth()) + ' ' + (y(d.value) + 18) + ')'
-					);
-				} else {
-					return (
-						'rotate(-90 ' + (x(d.timeLabel) - 70 + x.bandwidth()) + ' ' + (y(d.value) - 18) + ')'
-					);
-				}
-			});
-
-		// d3.select('.dot_wk:last-of-type').style('fill', 'var(--brand-green)');
+			.classed('opisText', true);
 
 		let lastDotX = parseFloat(d3.select('.dot_wk:last-of-type').attr('cx')) + 19.5;
 
@@ -165,11 +179,12 @@
 			.attr('r', 5)
 			.style('fill', '#0399a6')
 			.style('stroke-width', 2)
-			.style('stroke', '#0399a6');
+			.style('stroke', '#0399a6')
+			.raise();
 
 		g.append('text')
 			.attr('x', lastDotX - 10)
-			.attr('y', y(m2P)) // Dostosuj pozycję tekstu
+			.attr('y', y(m2P))
 			.text('TO MIESZKANIE')
 			.style('fill', '#0399a6')
 			.style('font-size', '9px'); // Kolor tekstu
@@ -182,7 +197,7 @@
 			.style('font-size', '10px'); // Kolor tekstu
 
 		function dragg(event) {
-			// console.log(event, y.invert(event.sourceEvent.pageY));
+			
 
 			if (event.dy) {
 				let svg = document.getElementById('uniqueSvgId');
@@ -225,32 +240,18 @@
 	};
 
 	async function updateWykres() {
-		if ($location.params.M2_PRICE > 0 && $location.params.page03.numOfQ) {
+		if ($location.params && $location.params.M2_PRICE > 0 && $location.params.page03.numOfQ) {
 			if ($location.params.page03.wykresData[1]) {
-				// console.log('Data exist ENTERING EDIT MODE', $location.params.page03.wykresData);
-
 				datax = $location.params.page03.wykresData;
 				mode = 'edit';
 				ready = true;
 			} else {
-				// console.log('Data not found ENTERING CREATE MODE');
-
-				// data = [
-				// 	{ timeLabel: 'I kw. 2023', value: 6500 },
-				// 	{ timeLabel: 'II kw. 2023', value: 10500 },
-				// 	{ timeLabel: 'III kw. 2023', value: 6167 },
-				// 	{ timeLabel: 'IV kw. 2023', value: 4123 },
-				// 	{ timeLabel: 'I kw. 2024', value: 4000 }
-				// ];
 				mode = 'create';
 				ready = true;
 				calculateQuart($location.params.page03.numOfQ);
 			}
 		}
 	}
-	updateWykres();
-
-
 
 	function calculateQuart(nOfQuart) {
 		qartals = [];
@@ -267,19 +268,12 @@
 		qartals = qartals.reverse();
 
 		if (datax) {
-			// const lastElement = data[data.length - 1];
-			// console.log(lastElement, qartals[qartals.length - 1]);
-
-			// Uzupełnij newQuartals danymi z data, jeśli istnieją
 			datax.forEach((d) => {
 				const index = qartals.findIndex((element) => element.timeLabel === d.timeLabel);
 
 				if (index !== -1) {
 					qartals[index].value = parseFloat(d.value).toFixed(2);
 				}
-				// qartals.find((element) => element.timeLabel === d.timeLabel)
-				// if(d.timeLabel == qartals[data.timeLabel])
-				// {console.log(d.value)}
 			});
 		}
 		datax = qartals; // Zwróć tablicę na zewnątrz funkcji
@@ -287,31 +281,14 @@
 	}
 
 	onMount(async () => {
-
-
-
 		updateWykres();
-
-
-
-
-
 	});
-
-
 
 	$: {
 		if ($location && $location.params && ready == false) {
-
-		
+			updateWykres();
 		}
-		// console.log($location.params.M2_PRICE);
-	
 	}
-
-
-
-
 
 </script>
 
@@ -328,19 +305,24 @@
 			max="20"
 			step="1"
 			bind:value={$location.params.page03.numOfQ}
-			on:change={() => calculateQuart($location.params.page03.numOfQ)}
-		/>
-
-		<button id="akt" on:click={() => calculateQuart($location.params.page03.numOfQ)}
+			on:change={() => calculateQuart($location.params.page03.numOfQ)} />
+		<!-- <button id="akt" on:click={() => calculateQuart($location.params.page03.numOfQ)}
 			>Uaktualnij kwartały</button
-		>
-		<button id="updateWyk" on:click={() => updateWykres()}
+		> -->
+		<!-- <button id="updateWyk" on:click={() => updateWykres()}
 			>Uaktualnij wykres</button
-		>
+		> -->
 	</div>
 {/if}
 
 <style>
+	:global(.opisText) {
+		transform-box: fill-box;
+		transform-origin: center;
+		dominant-baseline: central;
+		transform: rotate(270deg);
+		translate: 0px -15px;
+	}
 	.options button {
 		border-radius: 12px;
 		transition: all 0.2s ease-out;
@@ -348,17 +330,18 @@
 		padding: 10px;
 	}
 	#num {
-		border: 0.1px solid rgba(10, 10, 10, 0.1);
 		position: relative;
 		border-radius: 0px 0px 0 20px;
 	}
-	#akt:hover {
+	button:hover {
 		color: white !important;
 		background-color: rgba(10, 10, 10, 0.2);
 	}
 	#uniqueSvgId {
-		background-color: rgba(10, 10, 10, 0.02);
-		border-radius: 20px 20px 20px 0px;
+		/* background-color: rgba(10, 10, 10, 0.02); */
+		/* border-radius: 20px 20px 20px 0px; */
+		margin-left: -30px;
+    width: 710px;
 	}
 
 	.options {
@@ -369,4 +352,5 @@
 	}
 	:global(text.dot-label) {
 	}
+
 </style>

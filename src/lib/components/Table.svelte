@@ -2,7 +2,7 @@
 	import { Modal, Button } from 'flowbite-svelte';
 	import { onMount } from 'svelte';
 	import Loading from './loading.svelte';
-	import { location, nearLocation, nearLocationsPoints } from '$lib/stores/appStore.js';
+	import { location, nearLocation, nearLocationsPoints } from '$lib/stores/appStore';
 	import Pin from '$lib/components/pin.svelte';
 	import { fade } from 'svelte/transition';
 	let sortKey = 'M2_PRICE';
@@ -90,11 +90,17 @@
 		data = data.map((dataItem) => (dataItem.ID === item.ID ? item : dataItem));
 
 		if (ikey == 'adres') {
-			console.log('adres changed', item.adres);
+			// console.log('adres changed', item.adres);
 		}
 		sortTable(data, sortKey);
 	}
 
+	function calculatePricePerSquareMeter(row) {
+    if (row.params.POW && row.params.price) {
+        row.params.M2_PRICE = Math.round(row.params.price / row.params.POW); ;
+    }
+    saveEdit(row);
+}
 	async function getNearest() {
 		let result = await getNearFromAllDocuments();
 
@@ -140,40 +146,20 @@
 	}
 	let ready = false;
 	$: {
-		if ($location && $location.params && ready== false) {
+		if ($location && $location.params && ready == false) {
 			getNearest();
 
+			// sortTable(data);
+		}
+		if ($location && $location.params && ready == true) {
+			// getNearest();
 			// sortTable(data);
 		}
 	}
 
 	onMount(() => {
-
 		ready = true;
-
-
 	});
-
-	// $: {
-	// 	let index = data.findIndex((item) => item.center == true);
-	// 	if (index != -1) {
-	// 		if (data[index].adres !== $location.adres) {
-	// 			console.warn('Item address has changed');
-	// 		}
-	// 		data[index].adres = $location.adres;
-	// 		data[index].price = $location.price;
-
-	// 		if (data[index].params && $location.params) {
-	// 			data[index].params.POW = $location.params.POW;
-	// 		}
-
-	// 		data[index].center = true;
-	// 	}
-	// }
-
-	// 	setInterval(() => {
-
-	// }, 4000);
 
 	let pins = new Map();
 
@@ -188,10 +174,7 @@
 				if (result.data && result.data.status == 'ZERO_RESULTS') {
 					modalMessage = 'Popraw adres lokalizacji';
 				}
-				// console.log(result.address_components);
 				if (result.address_components && result.address_components.length > 0) {
-					// console.log(result.data.results);
-
 					let element = data.find((elem) => elem.ID === row.ID);
 
 					if (element) {
@@ -204,7 +187,6 @@
 					nearLocationsPoints.set(
 						data.filter((item) => item.params && item.params.lat && item.params.lon)
 					);
-					// console.log(element);
 				}
 			}
 		};
@@ -240,36 +222,8 @@
 		// }
 	}
 
-	// let generatePointsData = (data) => {
-	// 	POINTS = [];
-	// 	let GEOJSON = {
-	// 		type: 'FeatureCollection',
-	// 		features: {}
-	// 	};
-
-	// 	data.forEach((el) => {
-	// 		if (el.params.lon && el.params.lat) {
-	// 			POINTS.push({
-	// 				type: 'Feature',
-	// 				geometry: {
-	// 					type: 'Point',
-	// 					coordinates: [parseFloat(el.params.lon), parseFloat(el.params.lat)]
-	// 				},
-	// 				properties: {
-	// 					params: el.params,
-	// 					place_id: el.place_id,
-	// 					id: el.ID,
-	// 					createDate: el.createDate,
-	// 					adres: el.adres,
-	// 					sellDate: el.sellDate,
-	// 					distanceToReference: calculatedDistance
-	// 				}
-	// 			});
-	// 		}
-	// 	});
-	// };
-
 	let updateAdres;
+
 </script>
 
 <div class="tableData_">
@@ -277,10 +231,8 @@
 		<Loading />
 	{:else if data}
 		<table class="firstTable">
-			<!-- <button class="addELEM" on:click={() => addElem()}>
-				+
-				</button>
- -->
+			<button class="addELEM noPrint" on:click={() => addElem()}> + </button>
+
 			<thead>
 				<tr>
 					<th class="nth" />
@@ -291,22 +243,19 @@
 						on:click={() => {
 							sortKey = 'POW';
 							sortTable(data, sortKey);
-						}}>m2</th
-					>
+						}}>m2</th>
 					<th
 						class="cena"
 						on:click={() => {
 							sortKey = 'price';
 							sortTable(data, sortKey);
-						}}>CENA</th
-					>
+						}}>CENA</th>
 					<th
 						class="cenam2"
 						on:click={() => {
 							sortKey = 'M2_PRICE';
 							sortTable(data, sortKey);
-						}}>CENA ZA M2</th
-					>
+						}}>CENA ZA M2</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -314,63 +263,112 @@
 					{#if !row.center}
 						<!-- svelte-ignore a11y-click-events-have-key-events -->
 						<!-- svelte-ignore a11y-no-static-element-interactions -->
-						<span class="delete" on:click={() => deleteRow(row)}>x</span>
+						<span class="delete noPrint" on:click={() => deleteRow(row)}>x</span>
 					{/if}
 					<tr class:center={row.center}>
 						<td>{i + 1}</td>
-						<td class="adres">
-							<input
-								class="inputTD adres"
-								bind:value={row.adres}
-								on:blur={() => saveEdit(row, 'adres')}
-								on:click={(e) => e.currentTarget.select()}
-							/>
-						</td>
-						<td
-							><input
-								type="date"
-								class="inputTD createDate"
-								bind:value={row.createDate}
-								on:blur={() => saveEdit(row)}
-							/></td
-						>
+
+						{#if row.center}
+							<td class="adres">
+								<input
+									class="inputTD adres"
+									bind:value={$location.adres}
+									on:blur={() => saveEdit(row, 'adres')}
+									onClick="this.select();" 
+									readonly />
+							</td>
+						{:else}
+							<td class="adres">
+								<input
+									class="inputTD adres"
+									bind:value={row.adres}
+									on:blur={() => saveEdit(row, 'adres')}
+									onClick="this.select();" />
+							</td>
+						{/if}
+
 						<td>
-							<input
-								type="number"
-								step="1"
-								class="inputTD POW"
-								min="1"
-								bind:value={row.params.POW}
-								on:blur={() => saveEdit(row)}
-								on:click={(e) => e.currentTarget.select()}
-							/>
-						</td>
-						<td>
-							<input
-								type="number"
-								min="1"
-								class="inputTD price"
-								step="100"
-								bind:value={row.params.price}
-								on:blur={() => saveEdit(row)}
-								on:click={(e) => e.currentTarget.select()}
-							/>
+							{#if !row.center}
+								<input
+									type="date"
+									class="inputTD createDate"
+									bind:value={row.createDate}
+									on:blur={() => saveEdit(row)} />
+							{:else}
+								<input
+									type="date"
+									class="inputTD createDate"
+									bind:value={row.createDate}
+									readonly />
+							{/if}
 						</td>
 						<td>
-							<input
-								type="number"
-								step="100"
-								min="1"
-								class="inputTD M2_PRICE"
-								bind:value={row.params.M2_PRICE}
-								on:blur={() => saveEdit(row)}
-								on:click={(e) => e.currentTarget.select()}
-							/>
+							{#if !row.center}
+								<input
+									type="number"
+									step="1"
+									class="inputTD POW"
+									min="1"
+									bind:value={row.params.POW}
+									onClick="this.select();"
+									on:input={() => calculatePricePerSquareMeter(row)} />
+							{:else}
+								<input
+									type="number"
+									step="1"
+									class="inputTD POW"
+									min="1"
+									bind:value={row.params.POW}
+									readonly
+									 />
+							{/if}
+						</td>
+						<td>
+							{#if !row.center}
+								<input
+									type="number"
+									min="1"
+									class="inputTD price"
+									step="100"
+									bind:value={row.params.price}
+									onClick="this.select();"
+									on:input={() => calculatePricePerSquareMeter(row)} />
+							{:else}
+								<input
+									type="number"
+									min="1"
+									class="inputTD price"
+									step="100"
+									bind:value={row.params.price}
+									readonly
+									 />
+							{/if}
+						</td>
+						<td>
+							{#if !row.center}
+								<input
+									type="number"
+									step="100"
+									min="1"
+									class="inputTD M2_PRICE"
+									bind:value={row.params.M2_PRICE}
+									on:blur={() => saveEdit(row)}
+									onClick="this.select();" />
+							{:else}
+								<input
+									type="number"
+									step="100"
+									min="1"
+									class="inputTD M2_PRICE"
+									bind:value={row.params.M2_PRICE}
+									readonly
+									onClick="this.select();" />
+							{/if}
 						</td>
 					</tr>
 
 					{#if row.center == false}
-						<span class="onMap">
+						<span class="onMap noPrint">
 							<button on:click={(e) => handleClick(e, row)} disabled={!$location.params.poiGeodata}>
 								<Pin enabled={pins.get(row.ID) || Boolean(row.params.lat && row.params.lon)} />
 							</button>
@@ -400,11 +398,6 @@
 	</div>
 {/if}
 
-<!-- {#if modalUpdatePoint}
-	<div transition:fade={{ delay: 100, duration: 150 }}>
-		<Modal title={modalUpdatePoint} bind:open={modalUpdatePoint} autoclose />
-	</div>
-{/if} -->
 {#if modalMessage}
 	<div transition:fade={{ delay: 100, duration: 150 }}>
 		<Modal title={modalMessage} bind:open={modalMessage} autoclose />
@@ -430,7 +423,9 @@
 	}
 
 	table {
-		
+		tbody tr:hover {
+			background-color: rgba(220, 224, 215, 1);
+		}
 
 		margin-left: -30px;
 	}
@@ -515,4 +510,5 @@
 		text-align: center;
 		width: 110px;
 	}
+
 </style>

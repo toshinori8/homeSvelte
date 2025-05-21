@@ -1,9 +1,14 @@
 <script>
 	import Header from '$lib/components/header.svelte';
 	import Loading from '$lib/components/loading.svelte';
-	import { location, data, newLocation } from '$lib/stores/appStore.js';
-	import DonutMultiple from '$lib/components/DonutMultiple.svelte';
+	import { location, data, newLocation } from '$lib/stores/appStore';
+	import DonutMultiple from '$lib/components/DonutMultipleJ.svelte';
 	import Wykres from '$lib/components/Wykres.svelte';
+
+
+
+
+
 </script>
 
 <div class="content-block section page_03">
@@ -28,18 +33,19 @@
 
 			{#if !$location.params.M2_price && $location.params.M2_PRICE == 0}
 				<div class="center">
-					cena za metr: {$location.params.M2_PRICE}
+					
 					<Loading />
 				</div>
 			{:else}
-				cena za metr: {$location.params.M2_PRICE}
+			
 				<Wykres />
 			{/if}
 
-			<div>
+			<div />
 
-			<div class="grid_content noselect centered full" >
+			<div class="grid_content noselect centered full" />
 
+			<br>
 			<h2 class="title_medium noselect">
 				<span class="number_type noselect">9</span>
 				Prezentacja cen sprzedaży nieruchomości w mieście
@@ -62,8 +68,6 @@
 			</div>
 
 			<div class="pageNumber">3</div>
-			</div>
-		</div>
 		</div>
 	{/if}
 </div>

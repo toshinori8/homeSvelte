@@ -4,9 +4,11 @@
 	import Loading from '$lib/components/loading.svelte';
 	import EditableSelect from '$lib/components/editableSelect.svelte';
 	import { page } from '$app/stores';
-
 	import { browser } from '$app/environment';
+	import { PUBLIC_GAPI } from '$env/static/public';
+	import { scrollRef } from 'svelte-scrolling';
 
+	let srcGoogle = 'https://maps.googleapis.com/maps/api/js?key=' + PUBLIC_GAPI;
 	const searchParams = browser && $page.url.searchParams;
 	// import miastoDot from '/src/images/miastoDot.svg';
 	import { PUBLIC_API_MAPTILER } from '$env/static/public';
@@ -14,11 +16,8 @@
 	import '@maptiler/sdk/dist/maptiler-sdk.css';
 	config.apiKey = PUBLIC_API_MAPTILER;
 	Map.workerCount = 10;
-	// import pkg from 'maplibre-gl';
-	// const { Map, Marker, Popup } = pkg;
-	// import 'maplibre-gl/dist/maplibre-gl.css';
-
 	import {
+		poiReady,
 		loading,
 		error,
 		options,
@@ -28,28 +27,14 @@
 		currentDocument,
 		POIelements,
 		nearLocationsPoints
-	} from '$lib/stores/appStore.js';
-
-	import { get } from 'svelte/store';
-
+	} from '$lib/stores/appStore';
 	import { Modal, Button } from 'flowbite-svelte';
 	import { fade } from 'svelte/transition';
-	import fetchData from '$lib/database.js';
+	import { fetchData, fetchOptions, saveData } from '$lib/database.js';
 	import { dayjs } from 'svelte-time';
 	import '$lib/stores/pl';
 	dayjs.locale('pl');
-
-	// 	import L from 'leaflet';
-	//   import 'leaflet/dist/leaflet.css';
-
-	// import {Map} from 'mapbox-gl';
-	// import {Marker} from 'mapbox-gl'
-	// import '/node_modules/mapbox-gl/dist/mapbox-gl.css';
-
-	// Map.prewarm();
-
 	import { stopTyping } from '$lib/stopTyping.ts';
-
 	import {
 		getLoc,
 		getNearBy,
@@ -60,9 +45,9 @@
 		updateDistanceData
 	} from '$lib/functions';
 	import MaskInput from 'svelte-input-mask/MaskInput.svelte';
-	import { saveData } from '$lib/database';
-	import { data } from '@maptiler/sdk';
-
+	// import { data } from '@maptiler/sdk';
+	$poiReady = false;
+	let searching = false;
 	let isNewLocation = false,
 		isEdit,
 		map,
@@ -91,7 +76,6 @@
 		}
 	}
 
-	// function updateData() {}
 	let print = () => {
 		window.print();
 	};
@@ -100,14 +84,10 @@
 	let locationIcon;
 
 	let onStopTyping = (e) => {
-		// show search results in autocopleate window
-
 		newAdres = e.target.value;
-
+		searching = true;
 		if (e.target.value.length > 5 && e.target.value != 'Wpisz lokalizację') {
 			getLoc(e.target.value).then((e) => {
-				// console.log(e);
-
 				if (e['error']) {
 					console.log('unable to geocode : ' + e['error']);
 				} else {
@@ -133,7 +113,7 @@
 		if ($nearLocationsPoints && $nearLocationsPoints[0] && $nearLocationsPoints.length > 0) {
 			printOtherlocationPoints($nearLocationsPoints);
 			$location.params.page01.nearPoints = $nearLocationsPoints;
-			console.log('nearLocationsPoints', $nearLocationsPoints);
+			// console.log('nearLocationsPoints', $nearLocationsPoints);
 		}
 	}
 
@@ -150,38 +130,41 @@
 	};
 
 	function printOtherlocationPoints(tablePoints) {
-		console.log(tablePoints);
+		// console.log(tablePoints);
 
 		if (tablePoints.length > 0) {
 			otherAdressMarkers.forEach((marker) => marker.remove());
 
 			tablePoints.forEach((point) => {
-				
-				
 				const marker = new Marker({
-					element: document.createElement('img') 
+					element: document.createElement('img')
 				})
 					.setLngLat([parseFloat(point.params.lon), parseFloat(point.params.lat)]) // Marker position [lng, lat]
 					.addTo(map);
 
-				marker.getElement().src = "/images/POI/locationsDot.svg";
+				marker.getElement().src = '/images/POI/locationsDot.svg';
 				marker.getElement().style.width = '15px';
 				marker.getElement().style.height = '15px';
 
 				otherAdressMarkers.push(marker);
-
-			
-
-				
 			});
 
 			let geo = convData2Geo(tablePoints); //NOTE show other locations points
 
 			getBounds($location.params.poiGeodata.features.concat(geo.features), $location.params).then(
 				(dataCoor) => {
-					map.fitBounds(dataCoor, {
-						padding: 80
-					});
+					dataCoor = [
+						[dataCoor[0][0], dataCoor[0][1]],
+						[dataCoor[1][0], dataCoor[1][1]]
+					];
+					window.dataCoor = dataCoor;
+					map.fitBounds(
+						[
+							[dataCoor[0][0], dataCoor[0][1]],
+							[dataCoor[1][0], dataCoor[1][1]]
+						],
+						{ padding: 80 }
+					);
 				}
 			);
 		}
@@ -192,7 +175,7 @@
 
 		map = new Map({
 			container: mapContainer,
-			// style: MapStyle.OUTDOOR,
+			// style: MapStyle.BASIC,
 			center: [$location.params.lon + 1, $location.params.lat + 1],
 			zoom: 13,
 			preserveDrawingBuffer: true,
@@ -200,10 +183,11 @@
 		});
 
 		if (mode === 'edit') {
+			// NOTE EDYCJA OBIEKTU
 			// console.log('DrawMap: ' + mode);
 			map.on('load', function () {
 				getLoc($location.place_id, 'place_id').then((e) => {
-					console.log(e);
+					// console.log(e);
 				});
 
 				showLocationPoint();
@@ -211,8 +195,22 @@
 				printPoints2Map($location.params.poiGeodata);
 			});
 		} else if (mode == 'new') {
+			// NOTE NOWY OBIEKT
 			// console.log('DrawMap: ' + mode);
-			$location.params.POI = POIelements;
+			// get options locations display
+
+			// EXTRACT POI TO DISPLAY FROM OOPTIONS
+			let sortedElements = [];
+			for (const id of $options.POIelementsDisplay) {
+				for (const [key, value] of Object.entries(POIelements)) {
+					if (value.id == id) {
+						sortedElements.push(POIelements[key]);
+					}
+				}
+			}
+			$location.params.POI = sortedElements;
+			// EXTRACT POI TO DISPLAY FROM OOPTIONS
+
 			showLocationPoint();
 			// printOtherlocationPoints();
 		} else {
@@ -225,6 +223,13 @@
 		location.set({});
 		currentDocument.set('');
 
+		// console.log($options);
+		// let google = window.google;
+
+		// if(browser){
+		//  let directionsService = new google.maps.DirectionsService();
+		// 	console.log('directionsService',directionsService);
+		// }
 		try {
 			retrievedData = await fetchData();
 
@@ -361,23 +366,22 @@
 		});
 
 		getBounds(goeJSON.features, $location.params).then((dataCoor) => {
-			console.log('list of coordinates ', dataCoor);
-			map.fitBounds(dataCoor),
-				{
-					padding: 80
-				};
+			// console.log('list of coordinates ', dataCoor);
+
+			dataCoor = [
+				[dataCoor[0][0], dataCoor[0][1]],
+				[dataCoor[1][0], dataCoor[1][1]]
+			];
+			$location.params.fitBounds = dataCoor;
+			map.fitBounds(
+				[
+					[dataCoor[0][0], dataCoor[0][1]],
+					[dataCoor[1][0], dataCoor[1][1]]
+				],
+				{ padding: 80 }
+			);
+
 			//NOTE DISTANCE MIERZENIE
-			// updateDistanceData($location.params.POI, [$location.params.lon, $location.params.lat]).then(
-			// 	(POInts) => {
-			// 		console.log('POI distances UPDATED');
-
-			// 		// 			var elementIndex = $location.params.POI.findIndex(element => element.id === yourElementId);
-
-			// 		// if(elementIndex != -1) {
-			// 		// 	$location.params.POI[elementIndex] = yourNewValue;
-			// 		// }
-			// 	}
-			// );
 
 			if (replaceImage == true) {
 				//NOTE: Podmiana mapy na obrazek  if replaceImage
@@ -400,6 +404,15 @@
 				});
 			}
 		});
+		// console.log('updateDistanceData');
+		updateDistanceData($location.params.POI, [$location.params.lon, $location.params.lat]).then(
+			(POInts) => {
+				if (POInts == true) {
+					$poiReady = true;
+				}
+				// points are in $location
+			}
+		);
 	};
 
 	let updateMap = (type = 'new_location_search') => {
@@ -407,18 +420,15 @@
 		$location.params.lon = auto_coompleate.geometry.location.lng;
 		$location.params.lat = auto_coompleate.geometry.location.lat;
 		$location.place_id = auto_coompleate.place_id;
-		$location.adres = newAdres;
+		$location.adres = auto_coompleate.formatted_address;
 		modalUpdateData = false;
 		getNearBy($location).then((data) => {
-			console.log(
-				'---------------------------------------------------------',
-				'getNearBy',
-				$location,
-				data
-			);
-			// addressMarkers.forEach((marker) => {
-			// 	marker.remove();
-			// });
+			// console.log(
+			// 	'---------------------------------------------------------',
+			// 	'getNearBy',
+			// 	$location,
+			// 	data
+			// );
 
 			createPOIforMap($location.params.POI).then((data) => {
 				$location.params.poiGeodata = data; //NOTE PUNKTY POI GEODATA
@@ -430,22 +440,28 @@
 	};
 </script>
 
-<!-- <svelte:head>
-	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" on:load={start_map}></script>
+<svelte:head>
+	<script src={srcGoogle} async></script>
+	<!-- <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" on:load={start_map}></script>
 	<link
 		rel="stylesheet"
 		href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
 		integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
 		crossorigin=""
-	/>
-</svelte:head> -->
+	/> -->
+</svelte:head>
 
 <svelte:window on:keydown={handleWindowKeyDown} />
 
 <!-- <img src="/images/POI/miastoDotC.svg" width="120" height="180" alt=""  style="position: absolute; margin-left:300px"/> -->
 
-<div class="content-block section page_01">
+<div class="content-block section page_01" use:scrollRef={'page_01'}>
 	<Header />
+
+	<!-- distanceNearPOI
+	{$options.distanceNearPOI}
+	distanceNear
+	{$options.distanceNear} -->
 
 	<div class="page_content">
 		{#if !$location.adres}
@@ -465,7 +481,13 @@
 					on:stopTyping={onStopTyping}
 					use:stopTyping
 					value={$location.adres}
-				></textarea>
+				/>
+
+				{#if searching == true}
+					<div class="adress_loading">
+						<Loading />
+					</div>
+				{/if}
 			</div>
 			<div class="grid_content">
 				<div class="backgr_rounded">
@@ -727,7 +749,7 @@
 	</div>
 
 	<div class="map-wrap">
-		<div class="map" id="map" bind:this={mapContainer} > </div>
+		<div class="map" id="map" bind:this={mapContainer} />
 	</div>
 
 	<div class="pageNumber">1</div>
@@ -744,7 +766,11 @@
 			</p>
 
 			<svelte:fragment slot="footer">
-				<Button on:click={() => updateMap()}>Przelicz</Button>
+				<Button
+					on:click={() => {
+						updateMap();
+					}}>Przelicz</Button
+				>
 			</svelte:fragment>
 		</Modal>
 	</div>
@@ -772,7 +798,7 @@
 			<svelte:fragment slot="footer">
 				<Button
 					on:click={() => {
-						($location.adres = newAdres), saveData();
+						($location.adres = auto_coompleate.formatted_address), saveData();
 					}}>Zapisz nową nazwę</Button
 				>
 			</svelte:fragment>

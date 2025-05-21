@@ -1,6 +1,6 @@
 <script>
 	import Loading from '$lib/components/loading.svelte';
-	import { location } from '$lib/stores/appStore.js';
+	import { location } from '$lib/stores/appStore';
 
 
 	$location = {};
