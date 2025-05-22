@@ -12,3 +12,20 @@ export const handle = SvelteKitAuth({
     })],
     trustHost: true
 });
+
+
+import type { Handle } from '@sveltejs/kit';
+
+export const handles: Handle = async ({ event, resolve }) => {
+
+	if (
+		event.url.pathname.startsWith(
+			'/.well-known/appspecific/com.chrome.devtools'
+		)
+	) {
+		return new Response(null, { status: 204 }); // Return empty response with 204 No Content
+	}
+
+return await resolve(event);
+
+};

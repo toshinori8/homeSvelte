@@ -35,8 +35,8 @@ declare module '$env/static/private' {
 	export const npm_package_dependencies_flowbite: string;
 	export const npm_package_dependencies__googlemaps_google_maps_services_js: string;
 	export const NODE: string;
-	export const npm_package_dependencies_lodash_debounce: string;
 	export const npm_package_dependencies_svelte_persisted_store: string;
+	export const npm_package_dependencies_lodash_debounce: string;
 	export const npm_package_dependencies_leaflet: string;
 	export const npm_package_dependencies__auth_sveltekit: string;
 	export const INIT_CWD: string;
@@ -126,6 +126,7 @@ declare module '$env/static/private' {
 	export const npm_config_bin_links: string;
 	export const npm_package_engines_node: string;
 	export const npm_package_dependencies_filepond: string;
+	export const npm_package_devDependencies_vite_plugin_devtools_json: string;
 	export const XPC_SERVICE_NAME: string;
 	export const npm_package_version: string;
 	export const VSCODE_INJECTION: string;
@@ -225,8 +226,8 @@ declare module '$env/dynamic/private' {
 		npm_package_dependencies_flowbite: string;
 		npm_package_dependencies__googlemaps_google_maps_services_js: string;
 		NODE: string;
-		npm_package_dependencies_lodash_debounce: string;
 		npm_package_dependencies_svelte_persisted_store: string;
+		npm_package_dependencies_lodash_debounce: string;
 		npm_package_dependencies_leaflet: string;
 		npm_package_dependencies__auth_sveltekit: string;
 		INIT_CWD: string;
@@ -316,6 +317,7 @@ declare module '$env/dynamic/private' {
 		npm_config_bin_links: string;
 		npm_package_engines_node: string;
 		npm_package_dependencies_filepond: string;
+		npm_package_devDependencies_vite_plugin_devtools_json: string;
 		XPC_SERVICE_NAME: string;
 		npm_package_version: string;
 		VSCODE_INJECTION: string;

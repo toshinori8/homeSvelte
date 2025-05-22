@@ -37,7 +37,7 @@
 	let _id = 0;
 	// INPUT VALUES
 	export let id = '';
-	export let data = [];
+	export let data;
 
 	let newValues = {
 		id: _id,
