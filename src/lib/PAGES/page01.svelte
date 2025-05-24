@@ -483,11 +483,11 @@
 					value={$location.adres}
 				/>
 
-				{#if searching == true}
+				<!-- {#if searching == true}
 					<div class="adress_loading">
 						<Loading />
 					</div>
-				{/if}
+				{/if} -->
 			</div>
 			<div class="grid_content">
 				<div class="backgr_rounded">
