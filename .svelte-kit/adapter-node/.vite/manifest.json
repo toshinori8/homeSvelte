@@ -15,18 +15,13 @@
       "_index2.js"
     ]
   },
-  "_client.js": {
-    "file": "chunks/client.js",
-    "name": "client",
-    "imports": [
-      "_exports.js",
-      "_index2.js",
-      "_index.js"
-    ]
-  },
   "_exports.js": {
     "file": "chunks/exports.js",
     "name": "exports"
+  },
+  "_false.js": {
+    "file": "chunks/false.js",
+    "name": "false"
   },
   "_index.js": {
     "file": "chunks/index.js",
@@ -36,34 +31,60 @@
     "file": "chunks/index2.js",
     "name": "index",
     "imports": [
-      "_index.js"
+      "_ssr.js"
     ]
   },
   "_internal.js": {
     "file": "chunks/internal.js",
     "name": "internal",
     "imports": [
-      "_index.js"
+      "_ssr.js",
+      "_ssr2.js"
+    ],
+    "dynamicImports": [
+      "src/hooks.server.ts"
     ]
   },
   "_pl.js": {
     "file": "chunks/pl.js",
     "name": "pl",
     "imports": [
-      "_appStore.js"
+      "_appStore.js",
+      "_ssr.js"
     ],
     "css": [
-      "_app/immutable/assets/pl.B3eafJ2o.css"
+      "_app/immutable/assets/pl.Xv3gKcXE.css"
     ]
   },
-  "node_modules/@sveltejs/kit/src/runtime/components/svelte-5/error.svelte": {
+  "_public.js": {
+    "file": "chunks/public.js",
+    "name": "public"
+  },
+  "_ssr.js": {
+    "file": "chunks/ssr.js",
+    "name": "ssr"
+  },
+  "_ssr2.js": {
+    "file": "chunks/ssr2.js",
+    "name": "ssr"
+  },
+  "_stores.js": {
+    "file": "chunks/stores.js",
+    "name": "stores",
+    "imports": [
+      "_ssr.js",
+      "_exports.js",
+      "_ssr2.js"
+    ]
+  },
+  "node_modules/@sveltejs/kit/src/runtime/components/svelte-4/error.svelte": {
     "file": "entries/fallbacks/error.svelte.js",
     "name": "entries/fallbacks/error.svelte",
-    "src": "node_modules/@sveltejs/kit/src/runtime/components/svelte-5/error.svelte",
+    "src": "node_modules/@sveltejs/kit/src/runtime/components/svelte-4/error.svelte",
     "isEntry": true,
     "imports": [
-      "_index.js",
-      "_client.js"
+      "_ssr.js",
+      "_stores.js"
     ]
   },
   "node_modules/@sveltejs/kit/src/runtime/server/index.js": {
@@ -72,10 +93,22 @@
     "src": "node_modules/@sveltejs/kit/src/runtime/server/index.js",
     "isEntry": true,
     "imports": [
-      "_index.js",
+      "_false.js",
       "_internal.js",
+      "_index.js",
       "_exports.js",
       "_index2.js"
+    ]
+  },
+  "src/hooks.server.ts": {
+    "file": "chunks/hooks.server.js",
+    "name": "hooks.server",
+    "src": "src/hooks.server.ts",
+    "isDynamicEntry": true,
+    "imports": [
+      "_false.js",
+      "_internal.js",
+      "_public.js"
     ]
   },
   "src/routes/+layout.js": {
@@ -84,17 +117,23 @@
     "src": "src/routes/+layout.js",
     "isEntry": true
   },
+  "src/routes/+layout.server.js": {
+    "file": "entries/pages/_layout.server.js",
+    "name": "entries/pages/_layout.server",
+    "src": "src/routes/+layout.server.js",
+    "isEntry": true
+  },
   "src/routes/+layout.svelte": {
     "file": "entries/pages/_layout.svelte.js",
     "name": "entries/pages/_layout.svelte",
     "src": "src/routes/+layout.svelte",
     "isEntry": true,
     "imports": [
-      "_index.js",
+      "_ssr.js",
       "_appStore.js"
     ],
     "css": [
-      "_app/immutable/assets/_layout.8_a05PJa.css"
+      "_app/immutable/assets/_layout.DvFPR8jV.css"
     ]
   },
   "src/routes/+page.js": {
@@ -107,6 +146,19 @@
     "file": "entries/pages/_page.svelte.js",
     "name": "entries/pages/_page.svelte",
     "src": "src/routes/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_stores.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.BjoBygCj.css"
+    ]
+  },
+  "src/routes/api/+server.ts": {
+    "file": "entries/endpoints/api/_server.ts.js",
+    "name": "entries/endpoints/api/_server.ts",
+    "src": "src/routes/api/+server.ts",
     "isEntry": true,
     "imports": [
       "_index.js"
@@ -124,13 +176,15 @@
     "src": "src/routes/protected/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_index.js",
+      "_ssr.js",
       "_appStore.js",
       "_pl.js",
-      "_client.js"
+      "_stores.js",
+      "_public.js",
+      "_index2.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.ufgak0KW.css"
+      "_app/immutable/assets/_page.C_fl1pRH.css"
     ]
   },
   "src/routes/protected/data/+page.js": {
@@ -145,13 +199,13 @@
     "src": "src/routes/protected/data/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_index.js",
+      "_ssr.js",
       "_appStore.js",
       "_pl.js",
-      "_client.js"
+      "_stores.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.CFdt_6cy.css"
+      "_app/immutable/assets/_page.DjXbz5OO.css"
     ]
   }
 }

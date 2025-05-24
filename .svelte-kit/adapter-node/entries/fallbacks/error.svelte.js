@@ -1,26 +1,11 @@
-import { M as getContext, N as escape_html, D as pop, A as push } from "../../chunks/index.js";
-import "clsx";
-import { s as stores } from "../../chunks/client.js";
-({
-  check: stores.updated.check
+import { c as create_ssr_component, a as subscribe, e as escape } from "../../chunks/ssr.js";
+import { p as page } from "../../chunks/stores.js";
+const Error = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+  let $page, $$unsubscribe_page;
+  $$unsubscribe_page = subscribe(page, (value) => $page = value);
+  $$unsubscribe_page();
+  return `<h1>${escape($page.status)}</h1> <p>${escape($page.error?.message)}</p>`;
 });
-function context() {
-  return getContext("__request__");
-}
-const page$1 = {
-  get error() {
-    return context().page.error;
-  },
-  get status() {
-    return context().page.status;
-  }
-};
-const page = page$1;
-function Error$1($$payload, $$props) {
-  push();
-  $$payload.out += `<h1>${escape_html(page.status)}</h1> <p>${escape_html(page.error?.message)}</p>`;
-  pop();
-}
 export {
-  Error$1 as default
+  Error as default
 };

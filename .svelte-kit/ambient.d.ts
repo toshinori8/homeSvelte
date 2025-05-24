@@ -40,8 +40,8 @@ declare module '$env/static/private' {
 	export const npm_package_dependencies_leaflet: string;
 	export const npm_package_dependencies__auth_sveltekit: string;
 	export const INIT_CWD: string;
-	export const NVM_CD_FLAGS: string;
 	export const _P9K_TTY: string;
+	export const NVM_CD_FLAGS: string;
 	export const npm_package_dependencies_axios: string;
 	export const npm_package_devDependencies_typescript: string;
 	export const npm_config_version_git_tag: string;
@@ -97,7 +97,6 @@ declare module '$env/static/private' {
 	export const npm_config_argv: string;
 	export const npm_package_devDependencies_uuid: string;
 	export const _: string;
-	export const LaunchInstanceID: string;
 	export const npm_package_dependencies_query_overpass: string;
 	export const npm_package_dependencies_eslint_config_prettier: string;
 	export const npm_package_dependencies__sveltejs_adapter_node: string;
@@ -171,7 +170,6 @@ declare module '$env/static/private' {
 	export const npm_package_dependencies_flowbite_svelte_icons: string;
 	export const npm_config_init_version: string;
 	export const npm_config_ignore_optional: string;
-	export const SECURITYSESSIONID: string;
 	export const npm_package_dependencies_svelte_preprocess: string;
 	export const npm_package_dependencies_svelte_sortable_items: string;
 	export const npm_package_scripts_check: string;
@@ -231,8 +229,8 @@ declare module '$env/dynamic/private' {
 		npm_package_dependencies_leaflet: string;
 		npm_package_dependencies__auth_sveltekit: string;
 		INIT_CWD: string;
-		NVM_CD_FLAGS: string;
 		_P9K_TTY: string;
+		NVM_CD_FLAGS: string;
 		npm_package_dependencies_axios: string;
 		npm_package_devDependencies_typescript: string;
 		npm_config_version_git_tag: string;
@@ -288,7 +286,6 @@ declare module '$env/dynamic/private' {
 		npm_config_argv: string;
 		npm_package_devDependencies_uuid: string;
 		_: string;
-		LaunchInstanceID: string;
 		npm_package_dependencies_query_overpass: string;
 		npm_package_dependencies_eslint_config_prettier: string;
 		npm_package_dependencies__sveltejs_adapter_node: string;
@@ -362,7 +359,6 @@ declare module '$env/dynamic/private' {
 		npm_package_dependencies_flowbite_svelte_icons: string;
 		npm_config_init_version: string;
 		npm_config_ignore_optional: string;
-		SECURITYSESSIONID: string;
 		npm_package_dependencies_svelte_preprocess: string;
 		npm_package_dependencies_svelte_sortable_items: string;
 		npm_package_scripts_check: string;

@@ -7,55 +7,24 @@ function getStorage(type) {
   return type === "local" ? localStorage : sessionStorage;
 }
 function persisted(key, initialValue, options2) {
-  var _a, _b, _c, _d, _e, _f, _g, _h;
+  var _a, _b;
   const serializer = (_a = void 0) != null ? _a : JSON;
   const storageType = (_b = void 0) != null ? _b : "local";
-  const syncTabs = (_c = void 0) != null ? _c : true;
-  const onWriteError = (_e = (_d = void 0) != null ? _d : void 0) != null ? _e : (e) => console.error(`Error when writing value from persisted store "${key}" to ${storageType}`, e);
-  const onParseError = (_f = void 0) != null ? _f : (newVal, e) => console.error(`Error when parsing ${newVal ? '"' + newVal + '"' : "value"} from persisted store "${key}"`, e);
-  const beforeRead = (_g = void 0) != null ? _g : (val) => val;
-  const beforeWrite = (_h = void 0) != null ? _h : (val) => val;
   const browser = typeof window !== "undefined" && typeof document !== "undefined";
   const storage = browser ? getStorage(storageType) : null;
   function updateStorage(key2, value) {
-    const newVal = beforeWrite(value);
-    try {
-      storage == null ? void 0 : storage.setItem(key2, serializer.stringify(newVal));
-    } catch (e) {
-      onWriteError(e);
-    }
-  }
-  function maybeLoadInitial() {
-    function serialize(json2) {
-      try {
-        return serializer.parse(json2);
-      } catch (e) {
-        onParseError(json2, e);
-      }
-    }
-    const json = storage == null ? void 0 : storage.getItem(key);
-    if (json == null) return initialValue;
-    const serialized = serialize(json);
-    if (serialized == null) return initialValue;
-    const newVal = beforeRead(serialized);
-    return newVal;
+    storage == null ? void 0 : storage.setItem(key2, serializer.stringify(value));
   }
   if (!stores[storageType][key]) {
-    const initial = maybeLoadInitial();
-    const store = writable(initial, (set2) => {
-      if (browser && storageType == "local" && syncTabs) {
+    const store = writable(initialValue, (set2) => {
+      const json = storage == null ? void 0 : storage.getItem(key);
+      if (json) {
+        set2(serializer.parse(json));
+      }
+      if (browser && storageType == "local") {
         const handleStorage = (event) => {
-          if (event.key === key && event.newValue) {
-            let newVal;
-            try {
-              newVal = serializer.parse(event.newValue);
-            } catch (e) {
-              onParseError(event.newValue, e);
-              return;
-            }
-            const processedVal = beforeRead(newVal);
-            set2(processedVal);
-          }
+          if (event.key === key)
+            set2(event.newValue ? serializer.parse(event.newValue) : null);
         };
         window.addEventListener("storage", handleStorage);
         return () => window.removeEventListener("storage", handleStorage);
@@ -64,8 +33,8 @@ function persisted(key, initialValue, options2) {
     const { subscribe, set } = store;
     stores[storageType][key] = {
       set(value) {
-        set(value);
         updateStorage(key, value);
+        set(value);
       },
       update(callback) {
         return store.update((last) => {
@@ -74,21 +43,19 @@ function persisted(key, initialValue, options2) {
           return value;
         });
       },
-      reset() {
-        this.set(initialValue);
-      },
       subscribe
     };
   }
   return stores[storageType][key];
 }
 persisted("data", { storage: "session" });
-persisted("allDocuments", { init: [] });
+let allDocuments = persisted("allDocuments", { init: [] });
 let location = persisted("location", { init: {} });
-persisted("currentDocument", { init: [] });
+let poiReady = persisted("poiReady", {});
+let currentDocument = persisted("currentDocument", { init: [] });
 persisted("nearLocation", { init: [] });
 let nearLocationsPoints = persisted("nearLocationsPoints", { init: [] });
-persisted("newLocation", {
+const newLocation = persisted("newLocation", {
   // szablon nowego dokumentu. 
   ID: "",
   adres: "Wpisz lokalizację",
@@ -115,7 +82,7 @@ persisted("newLocation", {
     FROM_PRICE: 12,
     TO_PRICE: 13,
     WNIOSEK: "To mieszkanie znajduje się w bardzo atrakcyjnej i dobrej bezpiecznej okolicy. Lokale o tej powierzchni są bardzo popularne w Jasionce. Cena metra kwadratowego wskazanego przez Ciebie mieszkania jest zbliżona",
-    notes: "Przykładowe notatki ",
+    notes: "",
     page01: {
       nearPoints: [],
       nearPOI: []
@@ -146,13 +113,53 @@ persisted("newLocation", {
     page06: {
       poziomBEZPIECZENSTWA: 2,
       customCity: "",
-      customLatLon: []
+      customLatLon: [],
+      scalefactor: 1,
+      svgImage: false
+    },
+    page07: {
+      text14: "Poniższe bilanse pokazują wykres poparcia dla określonych partii politycznych oraz uzyskaną frekwencję w danym regionie względem ogólnej z całego miasta lub dzielnicy. Dane te zebrano z komisji wyborczej znajdującej się w najbliższej odległości od nieruchomości i odnoszą się do wyborów parlamentarnych mających miejsce w [xxxxxxxxx]",
+      donut1: 42,
+      donut2: 86,
+      wykresData: []
+    },
+    page08: {
+      poziomBEZPIECZENSTWA: 2,
+      positionPM10: 80,
+      positionPM25: 45,
+      PMcurrent: {
+        x1_10: 12,
+        x1_25: 56,
+        x2_10: 12,
+        x2_25: 56,
+        x3_10: 12,
+        x3_25: 56,
+        x4_10: 12,
+        x4_25: 56,
+        x5_10: 12,
+        x5_25: 56,
+        x6_10: 12,
+        x6_25: 56,
+        x7_10: 12,
+        x7_25: 56,
+        x8_10: 12,
+        x8_25: 56,
+        x9_10: 12,
+        x9_25: 56,
+        x10_10: 12,
+        x10_25: 56,
+        x11_10: 12,
+        x11_25: 56,
+        x12_10: 12,
+        x12_25: 56
+      }
     },
     POI: {}
   }
 });
 let options = persisted("options", {
   storage: "session",
+  POIelementsDisplay: [1, 2, 3],
   answers: {
     STANDARD: {
       0: "do odświeżenia",
@@ -205,8 +212,12 @@ let menuVisible = writable(true);
 let loading = writable(false);
 export {
   location as a,
+  allDocuments as b,
+  nearLocationsPoints as c,
+  currentDocument as d,
   loading as l,
   menuVisible as m,
-  nearLocationsPoints as n,
-  options as o
+  newLocation as n,
+  options as o,
+  poiReady as p
 };

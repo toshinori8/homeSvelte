@@ -1,0 +1,598 @@
+[
+  {
+    "ID": 1,
+    "createDate": "2023-12-01T12:00:00",
+    "adres": "Przykładowy Obiekt 1",
+    "params": {
+      "name": "Jasionka 74/2",
+      "price": 100000,
+      "lat": 50.1113303,
+      "lgn": 22.0556406,
+      "params_POW": 22,
+      "params_STANDARD": 1,
+      "params_POKOJE": 2,
+      "params_KUCHNIA": 1,
+      "params_BALKON_TARAS": 1,
+      "params_WINDA": 1,
+      "params_PIWNICA": 1,
+      "params_PARKING": 1,
+      "params_RODZAJ": 1,
+      "params_ROK_POWSTANIA": 1,
+      "params_RYNEK": 1,
+      "params_M2_PRICE": 0,
+      "params_FROM_PRICE": 12,
+      "params_TO_PRICE": 13,
+      "params_WNIOSEK": "To mieszkanie znajduje sie w bardzo atrakcyjnej i dobrej bezpiecznej okolicy. Lokale o tej powerzchni sq bardzo popularne w Jasionce. Cena metra kwadratowego wskazanego prez Ciebie mieszkonia jest zbizona do średniej ceny.",
+      "notes": "",
+      "POI": {
+        "metro": {
+          "lat": 50.1113303,
+          "lgn": 22.0556406,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "subway_station",
+          "searchStr": "stacja metra",
+          "icon": "metro.png"
+        },
+        "bus": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "bus_stop, transit_station",
+          "searchStr": "przystanek",
+          "icon": "bus.png"
+        },
+        "tram": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "train_station, train_stop",
+          "searchStr": "przystanek tramwajowy",
+          "icon": "train.png"
+        },
+        "bus_station": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "bus_station",
+          "searchStr": "bus station",
+          "icon": "bus_station.png"
+        },
+        "szkola": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "school",
+          "searchStr": "szkoła gimnazjum",
+          "icon": "szkola.png"
+        },
+        "przedszkole": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "preschool",
+          "searchStr": "przedszkole",
+          "icon": "przedszkole.png"
+        },
+        "szpitalM": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "hospital",
+          "searchStr": "szpital",
+          "icon": "szpitalM.png"
+        },
+        "przychodnia": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "doctor",
+          "searchStr": "przychodnia",
+          "icon": "przychodnia.png"
+        },
+        "shop": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "store",
+          "searchStr": "sklep",
+          "icon": "shop.png"
+        },
+        "park": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "park",
+          "searchStr": "park",
+          "icon": "park.png"
+        },
+        "portlot": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "airport",
+          "searchStr": "airport",
+          "icon": "airport.png"
+        },
+        "klinika": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "doctor",
+          "searchStr": "klinika",
+          "icon": "klinika.png"
+        }
+      }
+    }
+  },
+  {
+    "ID": 2,
+    "createDate": "2023-12-01T12:00:00",
+    "adres": "Przykładowy Obiekt 2",
+    "params": {
+      "name": "rzeszów cmentarz",
+      "price": 100000,
+      "lat": 50.1113303,
+      "lgn": 22.0556406,
+      "params_POW": 22,
+      "params_STANDARD": 1,
+      "params_POKOJE": 2,
+      "params_KUCHNIA": 1,
+      "params_BALKON_TARAS": 1,
+      "params_WINDA": 1,
+      "params_PIWNICA": 1,
+      "params_PARKING": 1,
+      "params_RODZAJ": 1,
+      "params_ROK_POWSTANIA": 1,
+      "params_RYNEK": 1,
+      "params_M2_PRICE": 0,
+      "params_FROM_PRICE": 12,
+      "params_TO_PRICE": 13,
+      "params_WNIOSEK": "To mieszkanie znajduje sie w bardzo atrakcyjnej i dobrej bezpiecznej okolicy. Lokale o tej powerzchni sq bardzo popularne w Jasionce. Cena metra kwadratowego wskazanego prez Ciebie mieszkonia jest zbizona do średniej ceny.",
+      "notes": "",
+      "POI": {
+        "metro": {
+          "lat": 50.1113303,
+          "lgn": 22.0556406,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "subway_station",
+          "searchStr": "stacja metra",
+          "icon": "metro.png"
+        },
+        "bus": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "bus_stop, transit_station",
+          "searchStr": "przystanek",
+          "icon": "bus.png"
+        },
+        "tram": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "train_station, train_stop",
+          "searchStr": "przystanek tramwajowy",
+          "icon": "train.png"
+        },
+        "bus_station": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "bus_station",
+          "searchStr": "bus station",
+          "icon": "bus_station.png"
+        },
+        "szkola": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "school",
+          "searchStr": "szkoła gimnazjum",
+          "icon": "szkola.png"
+        },
+        "przedszkole": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "preschool",
+          "searchStr": "przedszkole",
+          "icon": "przedszkole.png"
+        },
+        "szpitalM": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "hospital",
+          "searchStr": "szpital",
+          "icon": "szpitalM.png"
+        },
+        "przychodnia": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "doctor",
+          "searchStr": "przychodnia",
+          "icon": "przychodnia.png"
+        },
+        "shop": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "store",
+          "searchStr": "sklep",
+          "icon": "shop.png"
+        },
+        "park": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "park",
+          "searchStr": "park",
+          "icon": "park.png"
+        },
+        "portlot": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "airport",
+          "searchStr": "airport",
+          "icon": "airport.png"
+        },
+        "klinika": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "clinical",
+          "searchStr": "klinika",
+          "icon": "klinika.png"
+        }
+      }
+    }
+  },
+  {
+    "ID": 3,
+    "createDate": "2023-12-01T12:00:00",
+    "adres": "Przykładowy Obiekt 3",
+    "params": {
+      "name": "wadowice kopernika",
+      "price": 100000,
+      "lat": 50.1113303,
+      "lgn": 22.0556406,
+      "params_POW": 22,
+      "params_STANDARD": 1,
+      "params_POKOJE": 2,
+      "params_KUCHNIA": 1,
+      "params_BALKON_TARAS": 1,
+      "params_WINDA": 1,
+      "params_PIWNICA": 1,
+      "params_PARKING": 1,
+      "params_RODZAJ": 1,
+      "params_ROK_POWSTANIA": 1,
+      "params_RYNEK": 1,
+      "params_M2_PRICE": 0,
+      "params_FROM_PRICE": 12,
+      "params_TO_PRICE": 13,
+      "params_WNIOSEK": "To mieszkanie znajduje sie w bardzo atrakcyjnej i dobrej bezpiecznej okolicy. Lokale o tej powerzchni sq bardzo popularne w Jasionce. Cena metra kwadratowego wskazanego prez Ciebie mieszkonia jest zbizona do średniej ceny.",
+      "notes": "",
+      "POI": {
+        "metro": {
+          "lat": 50.1113303,
+          "lgn": 22.0556406,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "subway_station",
+          "searchStr": "stacja metra",
+          "icon": "metro.png"
+        },
+        "bus": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "bus_stop, transit_station",
+          "searchStr": "przystanek",
+          "icon": "bus.png"
+        },
+        "tram": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "train_station, train_stop",
+          "searchStr": "przystanek tramwajowy",
+          "icon": "train.png"
+        },
+        "bus_station": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "bus_station",
+          "searchStr": "bus station",
+          "icon": "bus_station.png"
+        },
+        "szkola": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "school",
+          "searchStr": "szkoła gimnazjum",
+          "icon": "szkola.png"
+        },
+        "przedszkole": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "preschool",
+          "searchStr": "przedszkole",
+          "icon": "przedszkole.png"
+        },
+        "szpitalM": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "hospital",
+          "searchStr": "szpital",
+          "icon": "szpitalM.png"
+        },
+        "przychodnia": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "doctor",
+          "searchStr": "przychodnia",
+          "icon": "przychodnia.png"
+        },
+        "shop": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "store",
+          "searchStr": "sklep",
+          "icon": "shop.png"
+        },
+        "park": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "park",
+          "searchStr": "park",
+          "icon": "park.png"
+        },
+        "portlot": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "airport",
+          "searchStr": "airport",
+          "icon": "airport.png"
+        },
+        "klinika": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "clinical",
+          "searchStr": "klinika",
+          "icon": "klinika.png"
+        }
+      }
+    }
+  },
+  {
+    "ID": 4,
+    "createDate": "2023-12-01T12:00:00",
+    "adres": "Przykładowy Obiekt 4",
+    "params": {
+      "name": "warszawa lotnisko",
+      "price": 100000,
+      "lat": 50.1113303,
+      "lgn": 22.0556406,
+      "params_POW": 22,
+      "params_STANDARD": 1,
+      "params_POKOJE": 2,
+      "params_KUCHNIA": 1,
+      "params_BALKON_TARAS": 1,
+      "params_WINDA": 1,
+      "params_PIWNICA": 1,
+      "params_PARKING": 1,
+      "params_RODZAJ": 1,
+      "params_ROK_POWSTANIA": 1,
+      "params_RYNEK": 1,
+      "params_M2_PRICE": 0,
+      "params_FROM_PRICE": 12,
+      "params_TO_PRICE": 13,
+      "params_WNIOSEK": "To mieszkanie znajduje sie w bardzo atrakcyjnej i dobrej bezpiecznej okolicy. Lokale o tej powerzchni sq bardzo popularne w Jasionce. Cena metra kwadratowego wskazanego prez Ciebie mieszkonia jest zbizona do średniej ceny.",
+      "notes": "",
+      "POI": {
+        "metro": {
+          "lat": 50.1113303,
+          "lgn": 22.0556406,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "subway_station",
+          "searchStr": "stacja metra",
+          "icon": "metro.png"
+        },
+        "bus": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "bus_stop, transit_station",
+          "searchStr": "przystanek",
+          "icon": "bus.png"
+        },
+        "tram": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "train_station, train_stop",
+          "searchStr": "przystanek tramwajowy",
+          "icon": "train.png"
+        },
+        "bus_station": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "bus_station",
+          "searchStr": "bus station",
+          "icon": "bus_station.png"
+        },
+        "szkola": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "school",
+          "searchStr": "szkoła gimnazjum",
+          "icon": "szkola.png"
+        },
+        "przedszkole": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "preschool",
+          "searchStr": "przedszkole",
+          "icon": "przedszkole.png"
+        },
+        "szpitalM": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "hospital",
+          "searchStr": "szpital",
+          "icon": "szpitalM.png"
+        },
+        "przychodnia": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "doctor",
+          "searchStr": "przychodnia",
+          "icon": "przychodnia.png"
+        },
+        "shop": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "store",
+          "searchStr": "sklep",
+          "icon": "shop.png"
+        },
+        "park": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "park",
+          "searchStr": "park",
+          "icon": "park.png"
+        },
+        "portlot": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "airport",
+          "searchStr": "airport",
+          "icon": "airport.png"
+        },
+        "klinika": {
+          "lat": 0,
+          "lgn": 0,
+          "name": "",
+          "city": "",
+          "dist": 0,
+          "type": "clinical",
+          "searchStr": "klinika",
+          "icon": "klinika.png"
+        }
+      }
+    }
+  }
+]
