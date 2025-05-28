@@ -29,6 +29,7 @@ declare module '$env/static/private' {
 	export const AUTH_TRUST_HOST: string;
 	export const ORIGIN: string;
 	export const AUTH_SECRET: string;
+	export const NPM_CONFIG_PRODUCTION: string;
 	export const NVM_INC: string;
 	export const npm_package_dependencies_filepond_plugin_image_exif_orientation: string;
 	export const TERM_PROGRAM: string;
@@ -43,7 +44,6 @@ declare module '$env/static/private' {
 	export const _P9K_TTY: string;
 	export const NVM_CD_FLAGS: string;
 	export const npm_package_dependencies_axios: string;
-	export const npm_package_devDependencies_typescript: string;
 	export const npm_config_version_git_tag: string;
 	export const TERM: string;
 	export const SHELL: string;
@@ -65,6 +65,7 @@ declare module '$env/static/private' {
 	export const ORIGINAL_XDG_CURRENT_DESKTOP: string;
 	export const MallocNanoZone: string;
 	export const npm_package_dependencies_postcss: string;
+	export const npm_package_dependencies_uuid: string;
 	export const npm_package_dependencies_textures: string;
 	export const npm_package_dependencies_tailwindcss: string;
 	export const npm_package_devDependencies__sveltejs_kit: string;
@@ -83,6 +84,7 @@ declare module '$env/static/private' {
 	export const COMMAND_MODE: string;
 	export const npm_package_dependencies_flowbite_svelte: string;
 	export const npm_package_dependencies__turf_turf: string;
+	export const npm_package_dependencies_vite_plugin_devtools_json: string;
 	export const SSH_AUTH_SOCK: string;
 	export const npm_package_dependencies_pnpm: string;
 	export const __CF_USER_TEXT_ENCODING: string;
@@ -91,19 +93,21 @@ declare module '$env/static/private' {
 	export const npm_package_dependencies_prettier: string;
 	export const npm_package_dependencies__auth_core: string;
 	export const npm_package_dependencies__jhubbardsf_svelte_sortablejs: string;
-	export const npm_package_devDependencies__rollup_plugin_json: string;
+	export const npm_package_dependencies__sveltejs_vite_plugin_svelte: string;
+	export const npm_package_devDependencies_svelte: string;
 	export const npm_package_dependencies_postcss_csso: string;
 	export const PATH: string;
 	export const npm_config_argv: string;
-	export const npm_package_devDependencies_uuid: string;
+	export const npm_package_devDependencies__sveltejs_adapter_node: string;
 	export const _: string;
 	export const npm_package_dependencies_query_overpass: string;
 	export const npm_package_dependencies_eslint_config_prettier: string;
-	export const npm_package_dependencies__sveltejs_adapter_node: string;
 	export const npm_config_engine_strict: string;
 	export const USER_ZDOTDIR: string;
 	export const __CFBundleIdentifier: string;
+	export const npm_package_dependencies_typescript: string;
 	export const PWD: string;
+	export const npm_package_dependencies__rollup_plugin_json: string;
 	export const VSCODE_NONCE: string;
 	export const P9K_SSH: string;
 	export const npm_lifecycle_event: string;
@@ -113,7 +117,6 @@ declare module '$env/static/private' {
 	export const LOCAL_GIT_DIRECTORY: string;
 	export const npm_package_dependencies_prettier_plugin_svelte: string;
 	export const npm_package_dependencies_osmtogeojson: string;
-	export const npm_package_devDependencies__sveltejs_vite_plugin_svelte: string;
 	export const npm_package_name: string;
 	export const npm_package_dependencies_autoprefixer: string;
 	export const npm_package_scripts_start: string;
@@ -125,7 +128,6 @@ declare module '$env/static/private' {
 	export const npm_config_bin_links: string;
 	export const npm_package_engines_node: string;
 	export const npm_package_dependencies_filepond: string;
-	export const npm_package_devDependencies_vite_plugin_devtools_json: string;
 	export const XPC_SERVICE_NAME: string;
 	export const npm_package_version: string;
 	export const VSCODE_INJECTION: string;
@@ -150,7 +152,6 @@ declare module '$env/static/private' {
 	export const npm_package_scripts_format: string;
 	export const PREFIX: string;
 	export const npm_lifecycle_script: string;
-	export const npm_package_dependencies_svelte: string;
 	export const VSCODE_GIT_IPC_HANDLE: string;
 	export const npm_package_dependencies_svelte_skeleton: string;
 	export const NVM_BIN: string;
@@ -218,6 +219,7 @@ declare module '$env/dynamic/private' {
 		AUTH_TRUST_HOST: string;
 		ORIGIN: string;
 		AUTH_SECRET: string;
+		NPM_CONFIG_PRODUCTION: string;
 		NVM_INC: string;
 		npm_package_dependencies_filepond_plugin_image_exif_orientation: string;
 		TERM_PROGRAM: string;
@@ -232,7 +234,6 @@ declare module '$env/dynamic/private' {
 		_P9K_TTY: string;
 		NVM_CD_FLAGS: string;
 		npm_package_dependencies_axios: string;
-		npm_package_devDependencies_typescript: string;
 		npm_config_version_git_tag: string;
 		TERM: string;
 		SHELL: string;
@@ -254,6 +255,7 @@ declare module '$env/dynamic/private' {
 		ORIGINAL_XDG_CURRENT_DESKTOP: string;
 		MallocNanoZone: string;
 		npm_package_dependencies_postcss: string;
+		npm_package_dependencies_uuid: string;
 		npm_package_dependencies_textures: string;
 		npm_package_dependencies_tailwindcss: string;
 		npm_package_devDependencies__sveltejs_kit: string;
@@ -272,6 +274,7 @@ declare module '$env/dynamic/private' {
 		COMMAND_MODE: string;
 		npm_package_dependencies_flowbite_svelte: string;
 		npm_package_dependencies__turf_turf: string;
+		npm_package_dependencies_vite_plugin_devtools_json: string;
 		SSH_AUTH_SOCK: string;
 		npm_package_dependencies_pnpm: string;
 		__CF_USER_TEXT_ENCODING: string;
@@ -280,19 +283,21 @@ declare module '$env/dynamic/private' {
 		npm_package_dependencies_prettier: string;
 		npm_package_dependencies__auth_core: string;
 		npm_package_dependencies__jhubbardsf_svelte_sortablejs: string;
-		npm_package_devDependencies__rollup_plugin_json: string;
+		npm_package_dependencies__sveltejs_vite_plugin_svelte: string;
+		npm_package_devDependencies_svelte: string;
 		npm_package_dependencies_postcss_csso: string;
 		PATH: string;
 		npm_config_argv: string;
-		npm_package_devDependencies_uuid: string;
+		npm_package_devDependencies__sveltejs_adapter_node: string;
 		_: string;
 		npm_package_dependencies_query_overpass: string;
 		npm_package_dependencies_eslint_config_prettier: string;
-		npm_package_dependencies__sveltejs_adapter_node: string;
 		npm_config_engine_strict: string;
 		USER_ZDOTDIR: string;
 		__CFBundleIdentifier: string;
+		npm_package_dependencies_typescript: string;
 		PWD: string;
+		npm_package_dependencies__rollup_plugin_json: string;
 		VSCODE_NONCE: string;
 		P9K_SSH: string;
 		npm_lifecycle_event: string;
@@ -302,7 +307,6 @@ declare module '$env/dynamic/private' {
 		LOCAL_GIT_DIRECTORY: string;
 		npm_package_dependencies_prettier_plugin_svelte: string;
 		npm_package_dependencies_osmtogeojson: string;
-		npm_package_devDependencies__sveltejs_vite_plugin_svelte: string;
 		npm_package_name: string;
 		npm_package_dependencies_autoprefixer: string;
 		npm_package_scripts_start: string;
@@ -314,7 +318,6 @@ declare module '$env/dynamic/private' {
 		npm_config_bin_links: string;
 		npm_package_engines_node: string;
 		npm_package_dependencies_filepond: string;
-		npm_package_devDependencies_vite_plugin_devtools_json: string;
 		XPC_SERVICE_NAME: string;
 		npm_package_version: string;
 		VSCODE_INJECTION: string;
@@ -339,7 +342,6 @@ declare module '$env/dynamic/private' {
 		npm_package_scripts_format: string;
 		PREFIX: string;
 		npm_lifecycle_script: string;
-		npm_package_dependencies_svelte: string;
 		VSCODE_GIT_IPC_HANDLE: string;
 		npm_package_dependencies_svelte_skeleton: string;
 		NVM_BIN: string;
