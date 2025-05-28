@@ -174,7 +174,7 @@
 		display: block !important;
 		width: 106px;
 		position: absolute;
-		box-shadow: 4px 8px 10px 0px rgba(96, 207, 94, 0.4);
+		box-shadow: 4px 8px 10px 0px rgba(72, 165, 227, 0.4);
 		border: solid rgba(100, 100, 100, 0.2) 0.1px;
 		height: 46px;
 		background: var(--brand-lightgreen);
